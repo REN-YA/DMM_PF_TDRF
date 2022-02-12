@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     registrations: "user/registrations",
     sessions: 'user/sessions'
     }
-  namespase :user do
+  namespace :user do
     resource :users, only: [:index, :show, :update, :edit] do
     # 退会確認画面
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     registrations: "store/registrations",
     sessions: 'store/sessions'
     }
-  namespase :store do
+  namespace :store do
     resource :stores, only: [:index, :show, :update, :edit] do
     # 退会確認画面
     get '/stores/unsubscribe' => 'stores#unsubscribe', as: 'unsubscribe'
