@@ -1,0 +1,18 @@
+<header class='top-page-header'>
+
+    <div class="header-top-content">
+      <!--管理者と顧客で表示変更-->
+    <%= link_to root_path, class: 'header-title' do %>
+      <div>TDRF</div>
+      <div class='header-sub-title'>〜本当に美味しいお店をみつけよう〜</div>
+    <% end %>
+
+    <div class="nav">
+        <ul class="lists-right">
+          <li><%= link_to "TOP",root_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
+          <li><%= link_to "ユーザー登録",root_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
+          <li><%= link_to "店舗登録",root_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
+        </ul>
+      </div>
+
+</header>
