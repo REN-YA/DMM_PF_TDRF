@@ -1,0 +1,57 @@
+<div>
+  <%= attachment_image_tag(@user, :image, :fill, 300, 300) %>
+  <%=  link_to "編集する", edit_store_store_path, class: "btn-sm btn-success" %>
+</div>
+
+
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="form-group">
+        <label class="form-label">店舗ジャンル</label><%= @store.store_genres %>
+        <label class="form-label">店舗ランキング</label>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="form-group">
+        <label class="form-label">郵便番号</label><%= @store.post_code %>
+        <label class="form-label">店舗住所</label><%= @store.address %>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="form-group">
+        <label class="form-label">お問い合わせ電話番号</label><%= @store.telephone_number %>
+        <label class="form-label">メールアドレス</label><%= @store.email %>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="form-group">
+        <label class="form-label">営業時間</label><%= @store.business_hours %>
+        <label class="form-label">ご予約サイト</label><%= @store.reservation_site %>
+        </div>
+      </div>
+    </div>
+
+  <div  class="list-user">
+      <p>レビュー一覧</p>
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th>投稿日</th>
+            <th>ユーザー名</th>
+            <th>評価</th>
+            <th>フォロー数</th>
+            <th>フォロワー数</th>
+            <th>総いいね</th>
+            <th>ユーザーランキング</th>
+          </tr>
+        </thead>
+      </table>
+</div>
+</div>
