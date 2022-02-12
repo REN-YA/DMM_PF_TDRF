@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="top col-12">
+      <h1><%= @user.name %>詳細</h1>
+      <%=  link_to "編集する", edit_user_user_path, class: "btn-sm btn-success" %>
+    </div>
+  </div>
+    <div>
+      <%= attachment_image_tag(@user, :image, :fill, 300, 300) %>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="form-group">
+        <label class="form-label">ユーザー名</label><%= @user.name %>
+        <label class="form-label">ユーザーランキング</label>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="form-group">
+        <label class="form-label">フォロー数</label>
+        <label class="form-label">フォロワー数</label>
+        <label class="form-label">いいね数</label>
+        <label class="form-label">総レビュー数</label>
+        </div>
+      </div>
+    </div>
+</div>
+<div  class="list-store">
+      <p>店舗一覧</p>
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th>投稿日</th>
+            <th>店舗名</th>
+            <th>評価</th>
+            <th>いいね</th>
+            <th>店舗ランキング</th>
+          </tr>
+        </thead>
+      </table>
+</div>

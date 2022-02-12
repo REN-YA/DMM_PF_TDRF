@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     sessions: 'user/sessions'
     }
   namespace :user do
-    resource :users, only: [:index, :show, :update, :edit] do
+    resources :users, only: [:index, :show, :update, :edit] do
     # 退会確認画面
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     sessions: 'store/sessions'
     }
   namespace :store do
-    resource :stores, only: [:index, :show, :update, :edit] do
+    resources :stores, only: [:index, :show, :update, :edit] do
     # 退会確認画面
     get '/stores/unsubscribe' => 'stores#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
