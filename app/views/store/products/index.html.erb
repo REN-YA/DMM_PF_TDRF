@@ -1,0 +1,35 @@
+<h2>商品一覧</h2>
+
+  <div class="mb-3 text-right">
+    <%= link_to '新規登録', new_store_product_path , class: "btn btn-primary" %>
+  </div>
+  
+  <% @genres.each do |genre| %>
+    <h2><%= genre.name %></h2>
+    <table>
+      <thead class="thead-default">
+        <tr>
+          <th>商品画像</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>販売ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Product.where(genre_id: genre.id).each do |product| %>
+          <tr>
+            <td><%= attachment_image_tag(product, :image, :fill, 300, 300) %></td>
+            <td><%= link_to product.name, store_product_path(product), class: "product_#{product.id}" %></td>
+            <td><%= product.selling_price %>円</td>
+            <td>
+              <% if product.is_selling == "on_sale" %>
+                <span class="text-success"><%= product.is_selling_i18n %></span>
+              <% else %>
+                <span class="text-secondary"><%= product.is_selling_i18n %></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>

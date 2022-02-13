@@ -1,0 +1,38 @@
+<h2>商品登録</h2>
+
+    <div>
+      <%= link_to '一覧画面', store_products_path, class: 'btn btn-primary' %>
+    </div>
+
+<%= form_with model: @product, url: store_products_path, local: true do |f| %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-8 offset-sm-2'>
+      <div class='form-group'>
+        <%= f.label '商品画像', class: 'col-sm-3' %>
+        <%= f.attachment_field :image, class: 'col-sm-8' %>
+      </div>
+      <div class='form-group'>
+        <%= f.label '商品名', class: 'col-sm-3' %>
+        <%= f.text_field :name, class: 'col-sm-8', placeholder: "商品名" %>
+      </div>
+      <div class='form-group'>
+        <%= f.label 'ジャンル', class: 'col-sm-3' %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: '選択してください'}, class: 'col-sm-8' %>
+      </div>
+      <div class='form-group'>
+        <%= f.label '税抜価格', class: 'col-sm-3' %>
+        <%= f.text_field :selling_price, class: 'col-sm-8', placeholder: "1000" %>円
+      </div>
+      <div class='form-group'>
+        <%= f.label '販売ステータス', class: 'col-sm-3' %>
+        <%= f.collection_radio_buttons :is_selling, Product.is_sellings_i18n, :first , :last %>
+      </div>
+      <div class='text-center'>
+        <%= f.submit '新規登録', class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
