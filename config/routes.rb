@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     patch '/stores/withdrawal' => 'stores#withdrawal', as: 'withdrawal'
     end
     resources :products, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :genres, only: [:index, :edit, :create, :update]
+    resources :genres, only: [:index, :edit, :create, :update, :destroy]
 
   end
 
