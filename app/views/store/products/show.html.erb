@@ -1,0 +1,31 @@
+<h2>商品詳細</h2>
+ <%= link_to '編集', edit_store_product_path(@product), class: 'btn btn-primary mb-3' %>
+ <%= link_to '削除', store_product_path(@product), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger "%>
+<div class='container'>
+　<div class='row'>
+　  <%= attachment_image_tag(@product, :image, :fill, 300, 300) %>
+　  <%= @product.name %>
+　  <%= @product.genre_id %>
+　  <%= @product.selling_price %>
+    <% if @product.is_selling == "on_sale" %>
+      <span class="text-success"><%= @product.is_selling_i18n %></span>
+    <% else %>
+      <span class="text-secondary"><%= @product.is_selling_i18n %></span>
+    <% end %>
+　</div>
+　
+</div>
+<div  class="list-user">
+      <p>レビュー</p>
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th>投稿日</th>
+            <th>ユーザー名</th>
+            <th>フォロワー数</th>
+            <th>ユーザーランキング</th>
+            <th>レビュー内容</th>
+          </tr>
+        </thead>
+      </table>
+  </div>

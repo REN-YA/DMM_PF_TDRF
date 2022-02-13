@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :notification, only: [:index]
     resources :favorites, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get 'followings' => 'relationship#followings', as: 'followings'
+    get 'followers' => 'relationship#followers', as: 'followers'
     resources :relationship, only: [:create, :destroy]
   end
 
