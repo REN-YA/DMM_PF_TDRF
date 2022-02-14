@@ -4,5 +4,6 @@ class HomesController < ApplicationController
     @users = User.all
     @stores = Store.all
   end
+  
 
 end
