@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     }
   namespace :user do
     resources :users, only: [:index, :show, :update, :edit] do
+       # フォロー・フォロワー用
+       post 'followings' => 'relationships#followings', as: 'followings'
+       delete  'followers' => 'relationships#followers', as: 'followers'
+       resources :relationships, only: [:index, :create, :destroy]
+
     # 退会確認画面
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
@@ -17,9 +22,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :notification, only: [:index]
     resources :favorites, only: [:create, :destroy]
-    get 'followings' => 'relationship#followings', as: 'followings'
-    get 'followers' => 'relationship#followers', as: 'followers'
-    resources :relationship, only: [:create, :destroy]
+
   end
 
     #店舗側decvise
