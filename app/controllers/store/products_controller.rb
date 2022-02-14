@@ -17,9 +17,11 @@ class Store::ProductsController < ApplicationController
   def index
     @genres = Genre.all
     @products = Product.all
+    
   end
 
   def show
+    
     @product = Product.find(params[:id])
   end
 
@@ -47,5 +49,6 @@ class Store::ProductsController < ApplicationController
     params.require(:product).permit(:store_id, :genre_id, :name, :image, :selling_price, :is_selling)
   end
 
+  
 
 end
