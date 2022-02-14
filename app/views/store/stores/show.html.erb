@@ -1,7 +1,9 @@
 <div>
   <%= attachment_image_tag(@user, :image, :fill, 300, 300) %>
-  <%=  link_to "編集する", edit_store_store_path, class: "btn-sm btn-success" %>
-  <%= link_to '一覧画面', store_products_path, class: 'btn btn-primary' %>
+  <% if @store == current_store %>
+  <%=  link_to "編集する", edit_store_store_path(current_store.id), class: "btn-sm btn-success" %>
+  <% end %>
+  <%= link_to '商品一覧画面', store_products_path, class: 'btn btn-primary' %>
 </div>
 
 

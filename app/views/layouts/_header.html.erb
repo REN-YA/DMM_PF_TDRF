@@ -6,7 +6,7 @@
       <div>TDRF</div>
       <div class='header-sub-title'>〜本当に美味しいお店をみつけよう〜</div>
     <% end %>
-  
+
     <div class="nav">
         <ul class="lists-right">
           <% if user_signed_in? %>
@@ -31,8 +31,8 @@
             <li><%= link_to "店舗登録",new_store_registration_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
             <li><%= link_to "ユーザーログイン",new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
             <li><%= link_to "店舗ログイン",new_store_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-            
-            
+
+
           <% end %>
         </ul>
       </div>

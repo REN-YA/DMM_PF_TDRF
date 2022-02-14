@@ -3,7 +3,7 @@
   <div class="mb-3 text-right">
     <%= link_to '新規登録', new_store_product_path , class: "btn btn-primary" %>
   </div>
-  
+
   <% @genres.each do |genre| %>
     <h2><%= genre.name %></h2>
     <table>
@@ -18,7 +18,7 @@
       <tbody>
         <% Product.where(genre_id: genre.id).each do |product| %>
           <tr>
-            <td><%= attachment_image_tag(product, :image, :fill, 300, 300) %></td>
+            <td><%= attachment_image_tag(product, :image, :fill, 150, 150) %></td>
             <td><%= link_to product.name, store_product_path(product), class: "product_#{product.id}" %></td>
             <td><%= product.selling_price %>円</td>
             <td>
@@ -32,4 +32,33 @@
         <% end %>
       </tbody>
     </table>
+  <% end %>
+  
+  
+  <% @genres.each do |genre| %>
+  <div class="genre-name">
+    <h2><%= genre.name %></h2>
+   </div>
+  <div class="product-list">
+    <% Product.where(genre_id: genre.id).each do |product| %>
+    <div class="product">
+        <div class="product-image">
+          <%= attachment_image_tag(product, :image, :fill, 150, 150) %>
+        </div>
+        <div class="product-name">
+          <%= link_to product.name, store_product_path(product), class: "product_#{product.id}" %>
+        </div>
+        <div class="product-price">
+          <%= product.selling_price %>円
+        </div>
+        <div class="product-is_selling">
+          <% if product.is_selling == "on_sale" %>
+            <span class="text-success"><%= product.is_selling_i18n %></span>
+          <% else %>
+            <span class="text-secondary"><%= product.is_selling_i18n %></span>
+          <% end %>
+        </div>
+    </div>
+    <% end %>
+  </div>  
   <% end %>

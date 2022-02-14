@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <h1 class="font-weight-normal mt-5 mb-5">店舗情報編集</h1>
   </div>
-  <%= form_with model: @store, url: store_stores_path, local:true do |f| %>
+  <%= form_with model: @store, url: store_store_path, local:true do |f| %>
   <div class="field">
   <%= f.label :イメージ画像%><br/>
   <%= f.attachment_field :image %>
@@ -40,7 +40,7 @@
     <%= f.text_field :telephone_number, autofocus: true %>
   </div>
 
-      
+
       <%= f.submit "変更を保存" %>
   <% end %>
 </div>
