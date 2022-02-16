@@ -43,10 +43,31 @@
           <tr>
             <th>投稿日</th>
             <th>店舗名</th>
+            <th>店舗ランキング</th>
+            <th>レビュー内容</th>
             <th>評価</th>
             <th>いいね</th>
-            <th>店舗ランキング</th>
           </tr>
         </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+          <tr>
+            <td>
+              <%= link_to user_review_path(review) do %>
+              <%= review.created_at.strftime('%Y/%m/%d/%T') %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to user_user_path(@user.id) do %>
+              <%= review.user.name %>
+              <% end %>
+            </td>
+            <td></td>
+            <td><%= review.contents %></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
       </table>
 </div>

@@ -1,0 +1,22 @@
+<h2>レビュー更新</h2>
+
+<div class='container'>
+　<div class='row'>
+　  <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
+　  <%= @review.product.name %>
+　  <%= @review.product.genre_id %>
+　  <%= @review.product.selling_price %>
+    <% if @review.product.is_selling == "on_sale" %>
+      <span class="text-success"><%= @review.product.is_selling_i18n %></span>
+    <% else %>
+      <span class="text-secondary"><%= @review.product.is_selling_i18n %></span>
+    <% end %>
+    <%= @review.contents %>
+　</div>
+</div>
+<h3>レビューする</h3>
+<%= form_with model: @review, url: user_review_path, local:true do |f| %>
+<%= f.text_area :contents, rows:'5',placeholder: "コメントをここに" %>
+<%= f.hidden_field :product_id, value: params[:id] %>
+<%= f.submit '更新' %>
+<% end %>

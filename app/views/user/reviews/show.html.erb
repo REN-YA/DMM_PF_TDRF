@@ -1,0 +1,19 @@
+<h2>レビュー詳細</h2>
+<% if @store == current_store %>
+ <%= link_to '編集', edit_user_review_path(@review), class: 'btn btn-primary mb-3' %>
+ <%= link_to '削除', user_review_path(@review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger "%>
+ <% end %>
+<div class='container'>
+　<div class='row'>
+　  <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
+　  <%= @review.product.name %>
+　  <%= @review.product.genre_id %>
+　  <%= @review.product.selling_price %>
+    <% if @review.product.is_selling == "on_sale" %>
+      <span class="text-success"><%= @review.product.is_selling_i18n %></span>
+    <% else %>
+      <span class="text-secondary"><%= @review.product_id.is_selling_i18n %></span>
+    <% end %>
+    <%= @review.contents %>
+　</div>
+</div>

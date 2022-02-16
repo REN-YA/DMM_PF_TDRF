@@ -7,6 +7,8 @@ class Store::StoresController < ApplicationController
 
   def show
     @store = Store.find(params[:id])
+    @reviews = Review.all
+    @user = User.all
   end
 
   def edit

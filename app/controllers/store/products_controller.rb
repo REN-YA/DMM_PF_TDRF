@@ -5,6 +5,7 @@ class Store::ProductsController < ApplicationController
   end
 
   def create
+    #商品情報登録
     @product = Product.new(product_params)
      @product.store_id = current_store.id
     if @product.save
@@ -17,16 +18,19 @@ class Store::ProductsController < ApplicationController
   def index
     @genres = Genre.all
     @products = Product.all
-    
   end
 
   def show
-    
     @product = Product.find(params[:id])
+    @store = Store.find(@product.store_id)
+    @review = Review.new
+    @reviews = Review.all
+    @user = User.all
   end
 
   def edit
     @product = Product.find(params[:id])
+     @store = Store.find(@product.store_id)
   end
 
   def update
@@ -48,7 +52,5 @@ class Store::ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:store_id, :genre_id, :name, :image, :selling_price, :is_selling)
   end
-
-  
 
 end

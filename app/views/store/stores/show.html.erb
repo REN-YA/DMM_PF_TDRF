@@ -1,5 +1,5 @@
 <div>
-  <%= attachment_image_tag(@user, :image, :fill, 300, 300) %>
+  <%= attachment_image_tag(@store, :image, :fill, 300, 300) %>
   <% if @store == current_store %>
   <%=  link_to "編集する", edit_store_store_path(current_store.id), class: "btn-sm btn-success" %>
   <% end %>
@@ -11,6 +11,7 @@
   <div class="row justify-content-center">
       <div class="col-12">
         <div class="form-group">
+         <%= @store.name %> 
         <label class="form-label">店舗ジャンル</label><%= @store.store_genres %>
         <label class="form-label">店舗ランキング</label>
         </div>
@@ -41,20 +42,39 @@
       </div>
     </div>
 
-  <div  class="list-user">
-      <p>レビュー一覧</p>
+  <div class="list-user">
+      <p>レビュー</p>
       <table class="table">
         <thead class="thead">
           <tr>
             <th>投稿日</th>
             <th>ユーザー名</th>
-            <th>評価</th>
-            <th>フォロー数</th>
             <th>フォロワー数</th>
-            <th>総いいね</th>
             <th>ユーザーランキング</th>
+            <th>評価</th>
+            <th>レビュー内容</th>
           </tr>
         </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+          <tr>
+            <td>
+              <%= link_to user_review_path(review) do %>
+              <%= review.created_at.strftime('%Y/%m/%d/%T') %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to user_user_path(@user) do %>
+              <%= review.user.name %>
+              <% end %>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><%= review.contents %></td>
+          </tr>
+          <% end %>
+        </tbody>
       </table>
   </div>
 </div>
