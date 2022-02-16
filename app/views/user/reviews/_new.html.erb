@@ -1,0 +1,8 @@
+<%# binding.pry %>
+<h3>レビューする</h3>
+<%= form_with model: review, url: user_reviews_path, local:true do |f| %>
+<%= f.text_area :contents, rows:'5',placeholder: "コメントをここに" %>
+<%= f.hidden_field :product_id, value: params[:id] %>
+<%= f.submit '投稿' %>
+<% end %>
+

@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <% Product.where(genre_id: genre.id).each do |product| %>
+        <% @products.where(genre_id: genre.id).each do |product| %>
           <tr>
             <td><%= attachment_image_tag(product, :image, :fill, 150, 150) %></td>
             <td><%= link_to product.name, store_product_path(product), class: "product_#{product.id}" %></td>
@@ -33,8 +33,9 @@
       </tbody>
     </table>
   <% end %>
-  
-  
+
+
+
   <% @genres.each do |genre| %>
   <div class="genre-name">
     <h2><%= genre.name %></h2>
@@ -58,7 +59,11 @@
             <span class="text-secondary"><%= product.is_selling_i18n %></span>
           <% end %>
         </div>
+        <div>
+          <%= link_to 'レビューする', new_user_review_path , class: "btn btn-primary" %>
+        </div>
     </div>
     <% end %>
-  </div>  
+  </div>
   <% end %>
+
