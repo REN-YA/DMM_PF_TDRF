@@ -4,16 +4,17 @@ class User::UsersController < ApplicationController
     @users = User.all
     @stores = Store.all
   end
-  
+
   def show
     @user = User.find(params[:id])
     @reviews = Review.all
+    @favorites = Favorite.all
   end
-  
+
   def edit
     @user = current_user
   end
-  
+
   def update
     @user = current_user
     if @user.update(user_params)
@@ -22,10 +23,10 @@ class User::UsersController < ApplicationController
      render 'edit'
     end
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :encrypted_password, :image_id)
   end
-  
+
 end
