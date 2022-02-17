@@ -19,10 +19,10 @@ Rails.application.routes.draw do
     # 論理削除用のルーティング
     patch '/users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     end
-    resources :reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :notification, only: [:index]
+    resources :reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resources :favorites, only: [:create, :destroy]
-
+    end
+    resources :notification, only: [:index]
   end
 
     #店舗側decvise

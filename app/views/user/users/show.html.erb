@@ -30,7 +30,7 @@
         <%= link_to @user.followings.count, user_user_followings_path(@user.id) %>
         <label class="form-label">フォロワー数</label>
         <%= link_to @user.followers.count, user_user_followers_path(@user.id) %>
-        <label class="form-label">いいね数</label>
+        <label class="form-label">総いいね数</label><%= @favorites.count %>
         <label class="form-label">総レビュー数</label>
         </div>
       </div>
@@ -65,7 +65,9 @@
             <td></td>
             <td><%= review.contents %></td>
             <td></td>
-            <td></td>
+            <td>
+              <%= render 'user/favorites/favorite', review: review %>
+            </td>
           </tr>
           <% end %>
         </tbody>
