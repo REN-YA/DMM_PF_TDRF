@@ -7,17 +7,18 @@
       <%= f.label :イメージ画像%><br/>
       <%= f.file_field :image %>
       </div>
-    
+
       <div class="field">
         <%= f.label :ユーザー名 %><br />
         <%= f.text_field :name, autofocus: true %>
       </div>
-    
+
       <div class="field">
         <%= f.label :メールアドレス %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-      
+
       <%= f.submit "変更を保存" %>
   <% end %>
+  <%= link_to "退会する", user_user_unsubscribe_path(current_user.id), class: "btn btn-danger" %>
 </div>

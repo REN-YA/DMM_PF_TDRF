@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     patch '/users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     end
     resources :reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-    resources :favorites, only: [:create, :destroy]
+    resources :favorites, only: [:create]
+    delete 'favorites/destroy' => 'favorites#destroy', as: 'favorite'
     end
     resources :notification, only: [:index]
   end
