@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_070925) do
+ActiveRecord::Schema.define(version: 2022_02_18_085216) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2022_02_13_070925) do
     t.string "contents"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "evaluation"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 2022_02_13_070925) do
     t.string "business_hours"
     t.string "reservation_site"
     t.string "telephone_number"
+    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_stores_on_email", unique: true
     t.index ["reset_password_token"], name: "index_stores_on_reset_password_token", unique: true
   end
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 2022_02_13_070925) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "image_id"
+    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

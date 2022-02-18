@@ -42,16 +42,25 @@
               <% end %>
             </td>
             <td>
-              <%= link_to user_user_path(@user) do %>
+              <%= link_to user_user_path(review.user_id) do %>
               <%= review.user.name %>
               <% end %>
             </td>
             <td></td>
             <td></td>
-            <td></td>
+            <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
             <td><%= review.contents %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
   </div>
+      <script>
+        $('.review-evaluation').raty({
+          readOnly: true,
+          score: function() {
+            return $(this).attr('data-score');
+          },
+          path: '/assets/'
+        });
+      </script>

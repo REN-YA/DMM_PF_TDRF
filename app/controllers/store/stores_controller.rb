@@ -23,6 +23,16 @@ class Store::StoresController < ApplicationController
      render 'edit'
     end
   end
+  
+  def unsubscribe
+  end
+
+  def withdrawal
+    @store = current_store
+    current_store.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
 
   private
   def store_params
