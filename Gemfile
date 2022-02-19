@@ -73,3 +73,4 @@ gem 'jquery-rails'
 gem 'enum_help'
 gem 'kaminari','~> 1.2.1'
 gem "geocoder"
+gem 'dotenv-rails'
