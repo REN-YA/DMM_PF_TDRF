@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h1 class="font-weight-normal mt-5 mb-5">店舗情報編集</h1>
+  </div>
+  <%= form_with model: @store, url: store_store_path, local:true do |f| %>
+  <div class="field">
+  <%= f.label :イメージ画像%><br/>
+  <%= f.attachment_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :店舗名 %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="field">
+    <%= f.label :店舗ジャンル %><br />
+    <%= f.text_field :store_genres, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :郵便番号 %><br />
+    <%= f.text_field :post_code, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :住所 %><br />
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :営業時間 %><br />
+    <%= f.text_field :business_hours, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :ご予約サイト%><br />
+    <%= f.text_field :reservation_site, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :お問い合わせ電話番号 %><br />
+    <%= f.text_field :telephone_number, autofocus: true %>
+  </div>
+      <%= f.submit "変更を保存" %>
+  <% end %>
+</div>
+<%= link_to "退会する", store_store_unsubscribe_path(current_store.id), class: "btn btn-danger" %>

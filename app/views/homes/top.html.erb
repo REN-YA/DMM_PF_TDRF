@@ -1,0 +1,29 @@
+<div class="top-image">
+  <div class="container">
+    <div class="top-explanation row justify-content-center">
+      <div class="top-text col-12">
+     <h4>こちらはみんなで本当に美味しいお店を見つけるための、グルメSNSサイトです</h4>
+     </div>
+    </div>
+  </div>
+</div>
+<div class="search">
+      検索覧
+      <%= render 'searchs/form' %>
+</div>
+<div class="list">
+  <div>
+  <%= render 'user/users/index',users: @users%>
+  </div>
+  <div>
+  <%= render 'store/stores/index',stores: @stores%>
+  <div>
+<div>    
+<div class=" row justify-content-center">
+    <div  class-"col-6">
+      ページング機能覧
+    </div>
+</div>
+
+
+
