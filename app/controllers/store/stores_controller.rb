@@ -23,7 +23,7 @@ class Store::StoresController < ApplicationController
      render 'edit'
     end
   end
-  
+
   def unsubscribe
   end
 
@@ -36,7 +36,7 @@ class Store::StoresController < ApplicationController
 
   private
   def store_params
-    params.require(:store).permit(:name, :email, :encrypted_password, :image_id, :store_genres, :post_code, :address, :business_hours, :reservation_site, :telephone_number)
+    params.require(:store).permit(:name, :email, :encrypted_password, :image_id, :store_genres, :post_code, :address, :business_hours, :reservation_site, :telephone_number, :latitude, :longitude)
   end
 
 end
