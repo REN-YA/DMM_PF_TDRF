@@ -8,6 +8,9 @@ class Store < ApplicationRecord
 
   has_many :products
   has_many :notifications
+  
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def active_for_authentication?
     super && (is_deleted == false)
