@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_004043) do
+ActiveRecord::Schema.define(version: 2022_02_19_013133) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2022_02_19_004043) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "use_id"
+    t.integer "visiter_id"
+    t.integer "visited_id"
     t.integer "stored_id"
     t.integer "review_id"
     t.string "action"

@@ -7,8 +7,7 @@ class Store < ApplicationRecord
   attachment :image
 
   has_many :products
-  has_many :notifications
-  
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

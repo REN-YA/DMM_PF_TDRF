@@ -1,64 +1,16 @@
 <div class="search">
       検索覧
+      <%= render 'searchs/form' %>
 </div>
-  <div class="list">
-    <div  class="list-user">
-      <p>ユーザー一覧</p>
-      <table class="table">
-        <thead class="thead">
-          <tr>
-            <th>ユーザー名</th>
-            <th>フォロー数</th>
-            <th>フォロワー数</th>
-            <th>ランキング</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-          <tr>
-            <td>
-              <%= link_to user_user_path(user.id) do %>
-              <%= user.name %>
-              <% end %>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div  class="list-store">
-      <p>店舗一覧</p>
-      <table class="table">
-        <thead class="thead">
-          <tr>
-            <th>店舗名</th>
-            <th>評価</th>
-            <th>総レビュー数</th>
-            <th>ランキング</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @stores.each do |store| %>
-          <tr>
-            <td>
-              <%= link_to store_store_path(store.id) do %>
-              <%= store.name %>
-               <% end %>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <% end %>
-          </tbody>
-      </table>
-    </div>
+<div class="list">
+  <div>
+  <%= render 'user/users/index',users: @users%>
   </div>
-
-  <div class=" row justify-content-center">
+  <div>
+  <%= render 'store/stores/index',stores: @stores%>
+  <div>
+<div>
+<div class=" row justify-content-center">
     <div  class-"col-6">
       ページング機能覧
     </div>
