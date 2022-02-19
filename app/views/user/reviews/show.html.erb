@@ -15,5 +15,15 @@
       <span class="text-secondary"><%= @review.product_id.is_selling_i18n %></span>
     <% end %>
     <%= @review.contents %>
+    <span class="review-evaluation" data-score="<%= @review.evaluation %>"></span>
 　</div>
 </div>
+<script>
+  $('.review-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

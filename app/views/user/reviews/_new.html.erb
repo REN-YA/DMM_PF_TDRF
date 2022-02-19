@@ -1,20 +1,24 @@
 <%# binding.pry %>
 <h3>レビューする</h3>
 <%= form_with model: review, url: user_reviews_path, local:true do |f| %>
-<div id="evaluate_stars">
-    <label>評価</label>
-</div>
-<%= f.text_area :contents, rows:'5',placeholder: "コメントをここに" %>
-<%= f.hidden_field :product_id, value: params[:id] %>
-<%= f.submit '投稿' %>
+  <div id="evaluate_stars">
+    <!--<label>評価</label>-->
+    <%= f.label :evaluation, '商品評価', class: 'evaluation-stars' %>
+  </div>
+  <%= f.text_area :contents, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.hidden_field :product_id, value: params[:id] %>
+  <%= f.submit '投稿' %>
 <% end %>
 
 <script>
-  $('#evaluate_stars').raty({
+  $('#evaluate_stars').raty(
+    {
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
-    scoreName: 'review[evaluation]'
+    scoreName: 'review[evaluation]',
+    half: true,
   });
+
 </script>
 

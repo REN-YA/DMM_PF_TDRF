@@ -15,9 +15,10 @@
     <% else %>
       <span class="text-secondary"><%= @product.is_selling_i18n %></span>
     <% end %>
+    <span>総レビュー数<%= @reviews.count %></span>
 　</div>
 </div>
- 
+
 <%= render 'user/reviews/new', review: @review%>
 
 <div class="list-user">
@@ -55,12 +56,12 @@
         </tbody>
       </table>
   </div>
-      <script>
-        $('.review-evaluation').raty({
-          readOnly: true,
-          score: function() {
-            return $(this).attr('data-score');
-          },
-          path: '/assets/'
-        });
-      </script>
+  <script>
+  $('.review-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

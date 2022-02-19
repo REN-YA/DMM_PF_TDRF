@@ -1,7 +1,7 @@
 class User::ReviewsController < ApplicationController
 
   def new
-    @review = Revire.new
+    @review = Review.new
   end
 
   def create
@@ -39,6 +39,6 @@ class User::ReviewsController < ApplicationController
 
   private
   def review_params
-      params.require(:review).permit(:user_id, :product_id, :contents, )
+      params.require(:review).permit(:user_id, :product_id, :contents, :evaluation )
   end
 end
