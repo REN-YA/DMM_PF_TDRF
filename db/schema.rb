@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 2022_02_19_064816) do
     t.string "reservation_site"
     t.string "telephone_number"
     t.boolean "is_deleted", default: false
-    t.float "latitube"
-    t.float "longitube"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_stores_on_email", unique: true
     t.index ["reset_password_token"], name: "index_stores_on_reset_password_token", unique: true
   end

@@ -6,6 +6,46 @@
   <%= link_to '商品一覧画面', store_products_path, class: 'btn btn-primary' %>
 </div>
 
+<script type="text/javascript">
+  function initMap() {
+//latitude,longitudeから位置を特定
+    var test ={lat: <%= @store.latitude %>, lng: <%= @store.longitude %>};
+    console.log(test)
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @store.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+ //Map上の指定した位置にピンを挿して表示する
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                 });
+
+     marker.addListener('click', function() {
+       infowindow.open(map, marker);
+     });
+  }
+</script>
+
+<script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDSekMzE_IeMXHP5Km0xWI7y6iv4YVPxys&callback=initMap">
+</script>
+
+<style type="text/css">
+  #map { height: 200px;
+         width: 70%;}
+</style>
+
+<div id="map"></div>
 
 <div class="container">
   <div class="row justify-content-center">
@@ -70,7 +110,7 @@
             </td>
             <td></td>
             <td></td>
-            <td></td>
+            <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
             <td><%= review.contents %></td>
           </tr>
           <% end %>
@@ -78,3 +118,12 @@
       </table>
   </div>
 </div>
+ <script>
+  $('.review-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
