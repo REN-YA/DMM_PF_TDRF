@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'homes#top' #TOPページ
-
+  get '/search', to: 'searchs#search'
     #ユーザーdevise
     devise_for :users,skip: [:passwords,], controllers: {
     registrations: "user/registrations",
