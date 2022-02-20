@@ -1,29 +1,28 @@
-
-    <div  class="list-store">
-      <p>店舗一覧</p>
-      <table class="table">
-        <thead class="thead">
-          <tr>
-            <th>店舗名</th>
-            <th>評価</th>
-            <th>総レビュー数</th>
-            <th>ランキング</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% stores.each do |store| %>
-          <tr>
-            <td>
-              <%= link_to store_store_path(store.id) do %>
-              <%= store.name %>
-               <% end %>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+<div  class="list-store">
+  <p>店舗一覧</p>
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th>店舗名</th>
+        <th>評価</th>
+        <th>総レビュー数</th>
+        <th>ランキング</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% stores.each do |store| %>
+      <tr>
+        <td>
+          <%= link_to store_store_path(store.id) do %>
+          <%= store.name %>
           <% end %>
-          </tbody>
-      </table>
-    </div>
-  </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
