@@ -1,28 +1,27 @@
-
-    <div  class="list-user">
-      <p>ユーザー一覧</p>
-      <table class="table">
-        <thead class="thead">
-          <tr>
-            <th>ユーザー名</th>
-            <th>フォロー数</th>
-            <th>フォロワー数</th>
-            <th>ランキング</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% users.each do |user| %>
-          <tr>
-            <td>
-              <%= link_to user_user_path(user.id) do %>
-              <%= user.name %>
-              <% end %>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+<div  class="list-user">
+  <p>ユーザー一覧</p>
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th>ユーザー名</th>
+        <th>フォロー数</th>
+        <th>フォロワー数</th>
+        <th>ランキング</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td>
+          <%= link_to user_user_path(user.id) do %>
+          <%= user.name %>
           <% end %>
-        </tbody>
-      </table>
-    </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
