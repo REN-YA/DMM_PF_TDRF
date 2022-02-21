@@ -4,9 +4,9 @@
       <h1 class="font-weight-normal mt-5 mb-5">本当に退会しますか？</h1>
     </div>
     <div class="text-center">
-      <p>退会すると会員情報や、</p></br>
-      <p>これまでの履歴が閲覧できなくなります。</p></br>
+      <p>退会すると、これまでのレビュー履歴が閲覧できなくなります。</p></br>
       <p>退会する場合は、「退会する」をクリックしてください。</p></br>
+      <p>なお、退会後も他のユーザーのレビューや店舗情報などご確認いただけます</p></br>
       <%= link_to "退会する", user_user_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-danger" %>
       <%= link_to "退会しない", user_user_path(current_user), class: "btn btn-success" %>
     </div>

@@ -2,6 +2,7 @@
       検索覧
 </div>
 <% if users.exists? %>
+<p>フォロー一覧</p>
     <% @followers.each do |user| %>
       <table class='table'>
         <thead>
@@ -31,7 +32,8 @@
   <% end %>
 
   <% if users.exists? %>
-    <% @followings.each do |user| %>
+
+    <% @followers.each do |user| %>
       <table class='table'>
         <thead>
           <tr>
@@ -48,7 +50,7 @@
               <%= user.name %>
               <% end %>
             </td>
-            <td>フォロー数:<%= user.followings.count %></td>
+            <td>フォロー数:<%= user.followers.count %></td>
             <td>フォロワー数:<%= user.followers.count %></td>
             <td></td>
           </tr>
