@@ -1,5 +1,5 @@
 <div  class="list-user">
-  <p>ユーザー一覧</p>
+  <p >ユーザー一覧</p>
   <table class="table">
     <thead class="thead">
       <tr>
@@ -17,8 +17,8 @@
           <%= user.name %>
           <% end %>
         </td>
-        <td></td>
-        <td></td>
+        <td><%= user.followings.count %></td>
+        <td><%= user.followers.count %></td>
         <td></td>
       </tr>
     <% end %>
