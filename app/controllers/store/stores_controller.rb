@@ -3,11 +3,11 @@ class Store::StoresController < ApplicationController
   def index
     @users = User.all
     @stores = Store.all
+    @reviews = Review.all
   end
 
   def show
     @store = Store.find(params[:id])
-    
     @reviews = Review.all
     @user = User.all
 
@@ -38,7 +38,7 @@ class Store::StoresController < ApplicationController
 
   private
   def store_params
-    params.require(:store).permit(:name, :email, :encrypted_password, :image_id, :store_genres, :post_code, :address, :business_hours, :reservation_site, :telephone_number, :latitude, :longitude)
+    params.require(:store).permit(:name, :email, :encrypted_password, :image, :store_genres, :post_code, :address, :business_hours, :reservation_site, :telephone_number, :latitude, :longitude)
   end
 
 end

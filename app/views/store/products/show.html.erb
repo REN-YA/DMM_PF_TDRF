@@ -1,28 +1,54 @@
-<h2>商品詳細</h2>
-<% if @store == current_store %>
- <%= link_to '編集', edit_store_product_path(@product), class: 'btn btn-primary mb-3' %>
- <%= link_to '削除', store_product_path(@product), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger "%>
- <% end %>
-<div class='container'>
-　<div class='row'>
-　  <%= attachment_image_tag(@product, :image, :fill, 300, 300) %>
-　  <%= @product.store.name %>
-　  <%= @product.name %>
-　  <%= @product.genre_id %>
-　  <%= @product.selling_price %>
-    <% if @product.is_selling == "on_sale" %>
-      <span class="text-success"><%= @product.is_selling_i18n %></span>
-    <% else %>
-      <span class="text-secondary"><%= @product.is_selling_i18n %></span>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="product_show col-8 text-center">
+      <h2>商品詳細</h2>
+    </div>
+  </div>
+  <div class='product_edit_delete_btn'>
+    <% if @store == current_store %>
+      <%= link_to '編集', edit_store_product_path(@product), class: 'btn-lg btn-primary' %>
+      <%= link_to '削除', store_product_path(@product), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger "%>
     <% end %>
-    <span>総レビュー数<%= @reviews.count %></span>
+  </div>
+
+　<div class='row justify-content-center'>
+　  <div  class="product_image col-4">
+　    <%= attachment_image_tag(@product, :image, :fill, 300, 300) %>
+　  </div>
+　  <div class="product_information col-5">
+　    <div class="product_information_show">
+　      店舗名 <span class="information_box"><%= @product.store.name %></span>
+　    </div>
+　    <div class="product_information_show">
+　      商品名 <span class="information_box"><%= @product.name %></span>
+　    </div>
+　    <div class="product_information_show">
+　      ジャンル名 <span class="information_box"><%= @product.genre.name %></span>
+　    </div>
+　    <div class="product_information_show">
+　      価格<span class="information_box"><%= @product.selling_price*1.1.floor %>円</span>（税込）
+      </div>
+      <div class="product_information_show">
+      　販売ステータス
+        <% if @product.is_selling == "on_sale" %>
+          <span class="information_box text-success"><%= @product.is_selling_i18n %></span>
+        <% else %>
+          <span class="information_box text-secondary"><%= @product.is_selling_i18n %></span>
+        <% end %>
+      </div>
+      <div class="product_information_show">
+        総レビュー数<span class="information_box"><%= @reviews.count %></span>
+      </div>
+　  </div>
 　</div>
-</div>
 
 <%= render 'user/reviews/new', review: @review%>
-
+</div>
+</div>
 <div class="list-user">
-      <p>レビュー</p>
+  <div class="table_title">
+    <p class="row justify-content-center">レビュー一覧</p>
+  </div>
       <table class="table">
         <thead class="thead">
           <tr>
@@ -47,8 +73,8 @@
               <%= review.user.name %>
               <% end %>
             </td>
-            <td></td>
-            <td></td>
+            <td><%= link_to review.user.followers.count,user_user_followers_path(review.user_id) %></td>
+            <td>ランキング</td>
             <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
             <td><%= review.contents %></td>
           </tr>

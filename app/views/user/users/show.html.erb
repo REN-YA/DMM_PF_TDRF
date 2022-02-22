@@ -5,21 +5,19 @@
       <h2><p class="user"><%= @user.name %></p> ユーザー情報</h2>
     </div>
   </div>
-
   <div class="edit">
       <% if @user == current_user %>
         <%=  link_to "編集する", edit_user_user_path, class: "btn-lg btn-success" %>
       <% end %>
   </div>
-
   <div class="row justify-content-center">
     <span class="follow_box">
       <p>
-      <% if current_user.following?(@user) %>
-        <%= link_to "フォロー外す", user_user_relationship_path(@user.id), method: :delete %>
-      <% else %>
-        <%= link_to "フォローする", user_user_relationships_path(@user.id), method: :post %>
-      <% end %>
+        <% if current_user.following?(@user) %>
+          <%= link_to "フォロー外す", user_user_relationship_path(@user.id), method: :delete %>
+        <% else %>
+          <%= link_to "フォローする", user_user_relationships_path(@user.id), method: :post %>
+        <% end %>
       </p>
     <span>
   </div>
@@ -34,12 +32,12 @@
       <div class="information_others_box">
         <div class="information_others">フォロー数
           <span class="information_box">
-            <%= link_to @user.followings.count %>
+            <%= link_to @user.followings.count,user_user_followings_path(@user.id) %>
           </span>
         </div>
         <div class="information_others">フォロワー数
           <span class="information_box">
-            <%= link_to @user.followers.count %>
+            <%= link_to @user.followers.count,user_user_followers_path(@user.id) %>
           </span>
         </div>
         <div class="information_others">総いいね数

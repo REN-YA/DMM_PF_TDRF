@@ -1,2 +1,12 @@
-<h2>Follower Users</h2>
-  <%= render 'user/relationships/follow_list', users: @users %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="following col-8 mt-3 mb-3 text-center">
+      <h2>フォローユーザー</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8 text-center">
+      <%= render 'user/relationships/follow_list', users: @users %>
+    </div>
+  </div>
+</div>

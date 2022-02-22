@@ -1,10 +1,12 @@
 <div  class="list-store">
-  <p>店舗一覧</p>
+  <div class="table_title">
+    <p class="row justify-content-center">店舗一覧</p>
+  </div>
   <table class="table">
     <thead class="thead">
       <tr>
         <th>店舗名</th>
-        <th>評価</th>
+        <th>総料理評価</th>
         <th>総レビュー数</th>
         <th>ランキング</th>
       </tr>
@@ -17,7 +19,7 @@
           <%= store.name %>
           <% end %>
         </td>
-        <td></td>
+        <td>平均値</td>
         <td></td>
         <td></td>
       </tr>

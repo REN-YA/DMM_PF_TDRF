@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   namespace :user do
     resources :users, only: [:index, :show, :update, :edit] do
        # フォロー・フォロワー用
-       post 'followings' => 'relationships#followings', as: 'followings'
-       delete  'followers' => 'relationships#followers', as: 'followers'
+       get 'followings' => 'relationships#followings', as: 'followings'
+       get 'followers' => 'relationships#followers', as: 'followers'
        resources :relationships, only: [:index, :create, :destroy]
 
     # 退会確認画面

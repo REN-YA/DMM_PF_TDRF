@@ -1,11 +1,15 @@
-<%= form_with model: @product, url: store_product_path, local: true do |f| %>
-<div class='container'>
-  <div class='row'>
-    <h2>商品編集</h2>
-    <div class='col-sm-8 offset-sm-2'>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="product_edit col-8 text-center">
+      <h2>商品編集</h2>
+    </div>
+  </div>
+  <%= form_with model: @product, url: store_product_path, local: true do |f| %>
+  <div class='row justify-content-center'>
+    <div class='col-8'>
       <div class='form-group'>
         <%= f.label '商品画像' ,class: 'col-sm-3' %>
-        <%= f.attachment_field :image ,class: 'col-sm-8' %>
+        <%= f.attachment_field :image,:fill, 60, 60, fallback: "no_image.jpg" ,class: 'col-sm-8' %>
       </div>
       <div class='form-group'>
         <%= f.label '商品名', class: 'col-sm-3' %>
@@ -28,5 +32,5 @@
       </div>
     </div>
   </div>
-</div>
 <% end %>
+</div>

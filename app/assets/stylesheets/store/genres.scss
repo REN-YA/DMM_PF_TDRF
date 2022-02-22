@@ -1,3 +1,26 @@
 // Place all the styles related to the store/genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+//ページ名
+.genre{
+  　position: relative;
+    margin: 0.5em 0;
+    position: relative;
+    padding: 0.3em 1em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    background-color: #DDDDDD;
+}
+.genre:before, .genre:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: black;
+}
+.genre:before {left: 10px;}
+.genre:after {right: 10px;}

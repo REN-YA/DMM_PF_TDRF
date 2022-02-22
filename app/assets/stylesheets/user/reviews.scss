@@ -35,7 +35,7 @@
 }
 
 //詳細情報BOX
-.product_information{
+.review_information{
   padding-top: 5px;
 }
 .review-evaluation{
@@ -46,7 +46,7 @@
 .information_show{
   margin: 0.5px 0px 0.5px 0px;
 }
-//商品各情報表示用
+//レビュー各情報表示用
 .information_box{
   padding: 0.3em 1em;
     margin: 2em 0;
@@ -67,5 +67,15 @@
     border-radius: 10px;
 }
 //コメント覧用BOX
+.review_new{
+    padding: 8px 8px;
+    margin: 0.2em 0;
+    color: #2c2c2f;
+    background-color: #BBBBBB;
+    border-top: solid 5px #555555;
+    border-bottom: solid 5px #555555;
+    height: 50px;
+}
+
 
 //ここまでレビューshowページ
