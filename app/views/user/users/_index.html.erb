@@ -1,5 +1,7 @@
 <div  class="list-user">
-  <p >ユーザー一覧</p>
+  <div class="table_title">
+    <p class="row justify-content-center">ユーザー一覧</p>
+  </div>
   <table class="table">
     <thead class="thead">
       <tr>
@@ -17,8 +19,8 @@
           <%= user.name %>
           <% end %>
         </td>
-        <td><%= user.followings.count %></td>
-        <td><%= user.followers.count %></td>
+        <td><%= link_to user.followings.count,user_user_followings_path(user.id) %></td>
+        <td><%= link_to user.followers.count,user_user_followers_path(user.id) %></td>
         <td></td>
       </tr>
     <% end %>

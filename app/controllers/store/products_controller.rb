@@ -18,6 +18,7 @@ class Store::ProductsController < ApplicationController
   def index
     @genres = Genre.all
     @products = Product.all
+    @store = current_store
   end
 
   def show
@@ -25,7 +26,7 @@ class Store::ProductsController < ApplicationController
     @store = Store.find(@product.store_id)
     @review = Review.new
     @reviews = Review.all
-    @user = User.all
+
   end
 
   def edit

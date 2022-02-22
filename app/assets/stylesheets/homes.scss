@@ -4,45 +4,83 @@
 
 @import "bootstrap";
 
+//TOP画像
 .top-image{
   background-image: image-url('top-image.jpeg');
   background-size: 100% 300px;
   width: 100%;
   height: 300px;
 }
-
+//概要説明文箇所設定
 .top-explanation{
   width: 100%;
   height: 25px;
 }
-
+//概要説明文
 .top-text{
   margin-top: 120px;;
   background-color: rgba( 255, 255, 255, 0.5);
 }
-
+//検索機能
 .search{
   width: 100%;
    margin-left: auto;
     margin-right: auto;
 }
 
+//検索タイトル
+.search_title{
+    margin: 10px;
+    position: relative;
+    padding: 0.25em 1em;
+    border: solid 2px #FF6600;
+    border-radius: 3px 0 3px 0;
+    background-color: #FF9966;
+}
+.search_title:before,.search_title:after
+{
+    content: '';
+    position: absolute;
+    width:10px;
+    height: 10px;
+    border: solid 2px #FF6600;
+    border-radius: 50%;
+}
+.search_title:after {
+    top:-10px;
+    left:-10px;
+}
+.search_title:before {
+    bottom: -9px;
+    right: -9px;
+}
+
+//ユーザー&店舗一覧BOX
 .list{
   display: flex;
   justify-content: center;
 }
-
+//ユーザー一覧位置設定
 .list-user{
-  margin: 15px;
+  margin: 10px 5px 0px 10px;
   padding: 15px;
 }
-
+//店舗一覧位置設定
 .list-store{
-  margin: 15px;
+  margin: 10px 5px 0px 10px;
   padding: 15px;
 }
 
-.table{
-  width: 100%;
-  padding: 10px 0 20px 0;
+//テーブル名
+.table_title{
+    padding: 8px 19px;
+    margin: 0.2em 0;
+    color: #2c2c2f;
+    background: #BBBBBB;
+    border-top: solid 5px #555555;
+    border-bottom: solid 5px #555555;
+}
+.table_title p {
+    margin: 0;
+    padding: 0;
 }

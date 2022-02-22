@@ -1,9 +1,6 @@
 class User::RelationshipsController < ApplicationController
 
-  def index
-    @followings = User.followings.all
-    @followers = User.followers.all
-  end
+
    # フォローするとき
   def create
     current_user.follow(params[:user_id])
@@ -17,12 +14,12 @@ class User::RelationshipsController < ApplicationController
   # フォロー一覧
   def followings
     user = User.find(params[:user_id])
-    @followings = user.followings
+    @users = user.followings
   end
   # フォロワー一覧
   def followers
     user = User.find(params[:user_id])
-    @followers = user.followers
+    @users = user.followers
   end
 
 end
