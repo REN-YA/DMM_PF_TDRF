@@ -78,4 +78,31 @@
 }
 
 
-//ここまでレビューshowページ
+//ここまでレビューeditページ
+//ここからレビューeditページ
+.review_name{
+  　position: relative;
+    margin: 20px 0;
+    position: relative;
+    padding: 0.3em 1em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    background-color: #DDDDDD;
+}
+.review_name:before, .review_name:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: black;
+}
+.review_name:before {left: 10px;}
+.review_name:after {right: 10px;}
+
+//各項目間隔設定
+.information_edit{
+  margin: 0.5px 0px 0.5px 0px;
+}
+//レビューeditページ名

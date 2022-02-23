@@ -1,29 +1,55 @@
-<h2>レビュー更新</h2>
-
-<div class='container'>
-　<div class='row'>
-　  <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
-　  <%= @review.product.name %>
-　  <%= @review.product.genre_id %>
-　  <%= @review.product.selling_price %>
-    <% if @review.product.is_selling == "on_sale" %>
-      <span class="text-success"><%= @review.product.is_selling_i18n %></span>
-    <% else %>
-      <span class="text-secondary"><%= @review.product.is_selling_i18n %></span>
-    <% end %>
-    <%= @review.contents %>
-　</div>
-</div>
-<h3>レビューする</h3>
-<%= form_with model: @review, url: user_review_path, local:true do |f| %>
- <div id="evaluate_stars">
-    <!--<label>評価</label>-->
-    <%= f.label :evaluation, '商品評価', class: 'evaluation-stars' %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="review_name font-weight-normal mt-3 mb-3 text-center">
+    <h2>レビュー内容更新</h2>
+    </div>
   </div>
-<%= f.text_area :contents, rows:'5',placeholder: "コメントをここに" %>
-<%= f.hidden_field :product_id, value: params[:id] %>
-<%= f.submit '更新' %>
-<% end %>
+
+　<div class='row justify-content-center'>
+　  <div class="product_image col-4">
+　    <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
+　  </div>
+　  <div class="review_information col-4">
+　    <div class="information_edit">
+  　    料理名<span class="information_box"><%= @review.product.name %></span>
+  　   </div>
+  　   <div class="information_edit">
+  　   ジャンル名<span class="information_box"><%= @review.product.genre_id %></span>
+  　   </div>
+  　   <div class="information_edit">
+  　   価格<span class="information_box"><%= @review.product.selling_price %>円</span>（税込）
+  　   </div>
+  　   <div class="information_edit">
+  　   販売ステータス
+        <% if @review.product.is_selling == "on_sale" %>
+          <span class="information_box text-success"><%= @review.product.is_selling_i18n %></span>
+        <% else %>
+          <span class="information_box text-secondary"><%= @review.product.is_selling_i18n %></span>
+        <% end %>
+      </div>
+    </div>
+　</div>
+
+  <div class="row justify-content-center">
+    <div class="review_new col-8 text-center">
+      <h4>レビューを更新する</h4>
+    </div>
+  </div>
+  <%= form_with model: @review, url: user_review_path, local:true do |f| %>
+    <div class="row justify-content-center">
+      <div id="evaluate_stars" class="col-3">
+        <%= f.label :evaluation, '料理評価', class: 'evaluation-stars' %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <%= f.text_area :contents, rows:'3' , cols:'60',placeholder: "コメントをここに" %>
+    </div>
+      <%= f.hidden_field :product_id, value: params[:id] %>
+    <div class="row justify-content-center">
+      <%= f.submit 'レビュー更新', class:"btn btn-warning" %>
+    </div>
+    <% end %>
+</div>
 <script>
   $('#evaluate_stars').raty(
     {

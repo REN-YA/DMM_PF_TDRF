@@ -1,38 +1,65 @@
-<header class='top-page-header'>
+<header class="header">
+  <div class="head">
 
-    <div class="header-top-content">
-      <!--管理者と顧客で表示変更-->
-    <%= link_to root_path, class: 'header-title' do %>
-      <div>TDRF</div>
-      <div class='header-sub-title'>〜本当に美味しいお店をみつけよう〜</div>
-    <% end %>
-
-    <div class="nav">
-        <ul class="lists-right">
-          <% if user_signed_in? %>
-          <!--ユーザーがログインしている時-->
-            <li><%= link_to "TOP",root_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-            <li><%= link_to "ユーザー&店舗一覧",user_users_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-            <li><%= link_to "Myページ",user_user_path(current_user), class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-            <li><%= link_to "ユーザーログアウト",destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
-          <% elsif store_signed_in? %>
-          <!--店舗がログインしている時-->
+    <% if user_signed_in? %>
+    <!--ユーザーがログインしている時-->
+    <div class="head-left-user">
+          <%= link_to root_path, class: 'header-title-user' do %>
+          <p class="main-title-user">TDRF</p>
+          <p class="sub-title-user">〜本当に美味しいお店をみつけよう〜</p>
+          <% end %>
+      </div>
+      <div class="head-right-user">
+        <div class="nav-user">
+          <ul class="link-lists-user">
+            <li><%= link_to "TOP",root_path, class: 'fas fa-sign-in-alt nav-link text-black' %></li>
+            <li><%= link_to "ユーザー&店舗一覧",user_users_path, class: 'fas fa-sign-in-alt nav-link text-black' %></li>
+            <li><%= link_to "Myページ",user_user_path(current_user), class: 'fas fa-sign-in-alt nav-link text-black' %></li>
+            <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-black' %></li>
+          </ul>
+        </div>
+      </div>
+    <!--店舗がログインしている時-->
+      <div class="head-left-store">
+          <%= link_to root_path, class: 'header-title' do %>
+          <p class="main-title-store">TDRF</p>
+          <p class="sub-title-store">〜本当に美味しいお店をみつけよう〜</p>
+          <% end %>
+      </div>
+      <div class="head-right-store">
+        <div class="nav-store">
+          <ul class="link-lists-store">
             <li><%= link_to "TOP",root_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
             <li><%= link_to "店舗&ユーザー一覧",store_stores_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
             <li><%= link_to "My店舗",store_store_path(current_store), class: 'fas fa-sign-in-alt nav-link text-light' %></li>
             <li><%= link_to "ジャンル一覧",store_genres_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
             <%= link_to '一覧画面', store_products_path, class: 'btn btn-primary' %>
             <li><%= link_to "店舗ログアウト",destroy_store_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
-          <% else %>
-          <!--ログイン前-->
-            <li><%= link_to "TOP",root_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-            <li><%= link_to "ユーザー&店舗一覧",user_users_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-            <li><%= link_to "ユーザー登録",new_user_registration_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-            <li><%= link_to "店舗登録",new_store_registration_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-            <li><%= link_to "ユーザーログイン",new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-            <li><%= link_to "店舗ログイン",new_store_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-          <% end %>
-        </ul>
+          </ul>
+        </div>
       </div>
-
+    <% else %>
+      <!--ログイン前-->
+      <div class="head-left">
+        <div class="nav-left">
+          <ul class="lists-left">
+            <li><%= link_to "ユーザー登録",new_user_registration_path, class: 'fas fa-sign-in-alt nav-link text-black' %></li>
+            <li><%= link_to "ユーザーログイン",new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-black' %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="head-right">
+        <div class="nav-right">
+          <ul class="lists-right">
+            <li><%= link_to "店舗登録",new_store_registration_path, class: 'fas fa-sign-in-alt nav-link text-black' %></li>
+            <li><%= link_to "店舗ログイン",new_store_session_path, class: 'fas fa-sign-in-alt nav-link text-black' %></li>
+          </ul>
+        </div>
+        <%= link_to root_path, class: 'header-title' do %>
+        <p class="main-title">TDRF</p>
+        <p class="sub-title">〜本当に美味しいお店をみつけよう〜</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </header>
