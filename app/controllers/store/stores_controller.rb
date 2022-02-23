@@ -20,7 +20,7 @@ class Store::StoresController < ApplicationController
   def update
     @store = current_store
     if @store.update(store_params)
-     redirect_to store_stores_path
+     redirect_to store_store_path
     else
      render 'edit'
     end

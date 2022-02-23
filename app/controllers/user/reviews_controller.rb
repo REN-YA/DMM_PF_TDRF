@@ -16,7 +16,7 @@ class User::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @user = User.find(params[:id])
+    @user = User.find(@review.user_id)
   end
 
   def edit

@@ -1,50 +1,63 @@
-<div>
-  <%= attachment_image_tag(@store, :image, :fill, 300, 300) %>
-  <% if @store == current_store %>
-  <%=  link_to "編集する", edit_store_store_path(current_store.id), class: "btn-sm btn-success" %>
-  <% end %>
-  <%= link_to '商品一覧画面', store_products_path, class: 'btn btn-primary' %>
+<div class="store-image">
+  <%= attachment_image_tag(@store, :image, :fill, 1000, 300) %>
 </div>
-
 <div class="container">
   <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-          <%= attachment_image_tag(@store, :image, :fill, 300, 300) %>
-         <%= @store.name %>
-        <label class="form-label">店舗ジャンル</label><%= @store.store_genres %>
-        <label class="form-label">店舗ランキング</label>
-        </div>
+    <div class="store col-8 text-center">
+      <h4>店舗情報</h4>
+    </div>
+  </div >
+  <div class="edit-index">
+    <% if @store == current_store %>
+    <%=  link_to "編集する", edit_store_store_path(current_store.id), class: "btn btn-success" %>
+    <% end %>
+    <%= link_to '商品一覧画面', store_products_path, class: 'btn btn-primary' %>
+  </div >
+
+  <div class="row justify-content-center">
+    <div class="col-4">
+      店舗名<span class="information_box"><%= @store.name %></span>
+    </div >
+  </div >
+  <div class="row justify-content-center">
+    <div class="info-genre-lank col-3">
+      店舗ジャンル<span class="information_box"><%= @store.store_genres %></span>
+    </div>
+    <div class="info-genre-lank col-3">
+      店舗ランキング<span class="information_box">位</span>
+    </div>
+  </div >
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div class="information_left">
+      お問い合わせ電話番号<span class="information_box"><%= @store.telephone_number %></span>
+      </div>
+      <div class="information_left">
+      メールアドレス<span class="information_box"><%= @store.email %></span>
+      </div>
+      <div class="information_left">
+      営業時間<span class="information_box"><%= @store.business_hours %></span>
+      </div>
+      <div class="information_left">
+      ご予約サイ<span class="information_box">ト<%= @store.reservation_site %></span>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-        <label class="form-label">郵便番号</label><%= @store.post_code %>
-        <label class="form-label">店舗住所</label><%= @store.address %>
-        <div id="map"></div>
-        </div>
+    <div class="col-7">
+      <div class="information_right">
+      郵便番号<span class="information_box"><%= @store.post_code %></span>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-        <label class="form-label">お問い合わせ電話番号</label><%= @store.telephone_number %>
-        <label class="form-label">メールアドレス</label><%= @store.email %>
-        </div>
+      <div class="information_right">
+      店舗住所<span class="information_box"><%= @store.address %></span>
       </div>
+      <div id="map"></div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-        <label class="form-label">営業時間</label><%= @store.business_hours %>
-        <label class="form-label">ご予約サイト</label><%= @store.reservation_site %>
-        </div>
-      </div>
-    </div>
+  </div>
+
 
   <div class="list-user">
-      <p>レビュー</p>
+    <div class="table_title">
+      <p class="row justify-content-center">レビュー</p>
+    </div>
       <table class="table">
         <thead class="thead">
           <tr>
