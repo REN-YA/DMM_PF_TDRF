@@ -30,7 +30,6 @@
     </div>
     <div class="user_information col-5">
         <p>ユーザー名 <span class="information_box"><%= @user.name %></span></p>
-        <p>ユーザーランキング <span class="information_box">位</span></p>
       <div class="information_others_box">
         <div class="information_others">フォロー数
           <span class="information_box">
@@ -44,12 +43,17 @@
         </div>
         <div class="information_others">総いいね数
           <span class="information_box">
-
+            <%= @total_favorites %>
           </span>
         </div>
         <div class="information_others">総レビュー数
           <span class="information_box">
-
+            <%= @user.reviews.count %>
+          </span>
+        </div>
+        <div class="information_others">1レビューに対する平均いいね数
+          <span class="information_box">
+            <%= @total_favorites/@user.reviews.count.floor %>
           </span>
         </div>
       </div>
@@ -66,33 +70,44 @@
       <tr>
         <th>投稿日</th>
         <th>店舗名</th>
-        <th>店舗ランキング</th>
-        <th>レビュー内容</th>
         <th>評価</th>
+        <th>評価内容</th>
         <th>いいね</th>
       </tr>
     </thead>
     <tbody>
+    <div class="scroll-list jscroll">
       <% @reviews.each do |review| %>
-      <tr>
-        <td>
-          <%= link_to user_review_path(review) do %>
-          <%= review.created_at.strftime('%Y/%m/%d/%T') %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to user_user_path(review.user_id) do %>
-          <%= review.user.name %>
-          <% end %>
-        </td>
-        <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
-        <td><%= review.contents %></td>
-        <td></td>
-        <td id="favorite_buttons_<%= review.id %>">
-          <%= render 'user/favorites/favorite', review: review %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= link_to user_review_path(review) do %>
+            <%= review.created_at.strftime('%Y/%m/%d/%T') %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_user_path(review.user_id) do %>
+            <%= review.user.name %>
+            <% end %>
+          </td>
+          <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
+          <td><%= review.contents %></td>
+          <td id="favorite_buttons_<%= review.id %>">
+            <%= render 'user/favorites/favorite', review: review %>
+          </td>
+        </tr>
       <% end %>
+      <%= paginate @reviews %>
+    </div>
     </tbody>
   </table>
 </div>
+
+<script>
+  $('.review-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

@@ -1,10 +1,10 @@
 class HomesController < ApplicationController
 
   def top
-    @users = User.all
-    @stores = Store.all
+    @users = User.page(params[:page]).per(20)
+    @stores = Store.page(params[:page]).per(20)
    
-  end
 
+  end
 
 end

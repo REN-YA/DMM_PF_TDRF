@@ -12,18 +12,21 @@
       </tr>
     </thead>
     <tbody>
-    <% users.each do |user| %>
-      <tr>
-        <td>
-          <%= link_to user_user_path(user.id) do %>
-          <%= user.name %>
-          <% end %>
-        </td>
-        <td><%= link_to user.followings.count,user_user_followings_path(user.id) %></td>
-        <td><%= link_to user.followers.count,user_user_followers_path(user.id) %></td>
-        <td></td>
-      </tr>
-    <% end %>
+    <div class="scroll-list jscroll">
+      <% users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user_user_path(user.id) do %>
+            <%= user.name %>
+            <% end %>
+          </td>
+          <td><%= link_to user.followings.count,user_user_followings_path(user.id) %></td>
+          <td><%= link_to user.followers.count,user_user_followers_path(user.id) %></td>
+          <td></td>
+        </tr>
+      <% end %>
+      <%= paginate users %>
+    </div>
     </tbody>
   </table>
 </div>
