@@ -32,30 +32,37 @@
 //ここからユーザーログイン時
 //ヘッダー左側ブロック
 .head-left-user{
-  width: 50vw;
+  width: 30vw;
   height: 100px;
-  background-image: image-url('top-image.jpeg');
+  background-image: image-url('header-left-user.jpeg');
   background-size: cover;
-  background-position: 0px 190px;
+  background-position: 0px 100px;
 }
 
 //ヘッダー右側ブロック
 .head-right-user{
-  width: 50vw;
+  width: 70vw;
   height: 100px;
-  background-image: image-url('header-rigth.jpeg');
+  background-image: image-url('top-image.jpeg');
   background-size: cover;
-  background-position: 0px 135px;
+  background-position: 0px 245px;
   position: relative;
 }
-
+//navバー設定
 .nav-user {
   font-size: 18px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  width: 50vw;
+  width: 70vw;
   padding: 1vh 0;
+}
+//リンク項目覧設定
+.link-lists-user{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+list-style: none;
+margin: 0 30px 0 auto;
 }
 
 //サイトタイトル
@@ -64,7 +71,7 @@
   background-color: rgba( 255, 255, 255, 0.5);
   position: absolute;
   top: 15px;
-  left: -38px;
+  left: 115px;
   border-radius: 5px;
 }//サブタイトルブロック
 .sub-title-user{
@@ -72,7 +79,7 @@
   background-color: rgba( 255, 255, 255, 0.5);
   position: absolute;
   top: 60px;
-  left: -120px;
+  left: 30px;
   border-radius: 5px;
 }
 //ここまでユーザーログイン時
@@ -80,39 +87,36 @@
 //ここから店舗ログイン時
 //ヘッダー左側ブロック
 .head-left-store{
-  width: 50vw;
-  height: 100px;
-  background-image: image-url('top-image.jpeg');
-  background-size: cover;
-  background-position: 0px 190px;
-}
-
-.nav-store {
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 50vw;
-  padding: 1vh 0;
-}
-
-//ヘッダー右側ブロック
-.head-right-store{
-  width: 50vw;
+  width: 30vw;
   height: 100px;
   background-image: image-url('header-rigth.jpeg');
   background-size: cover;
-  background-position: 0px 135px;
-  position: relative;
+  background-position: 0px 110px;
 }
-
-.nav-store {
+//navバー設定
+.nav-store{
   font-size: 18px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  width: 50vw;
-  padding: 1vh 0;
+  width: 70vw;
+  padding: 2vh 0;
+}
+//リンク項目覧設定
+.link-lists-store{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+list-style: none;
+margin: 0 30px 0 auto;
+}
+//ヘッダー右側ブロック
+.head-right-store{
+  width: 70vw;
+  height: 100px;
+  background-image: image-url('store-header.jpeg');
+  background-size: cover;
+  background-position: 0px 260px;
+  position: relative;
 }
 
 //サイトタイトル
@@ -121,7 +125,7 @@
   background-color: rgba( 255, 255, 255, 0.5);
   position: absolute;
   top: 15px;
-  left: -38px;
+  left: 115px;
   border-radius: 5px;
 }//サブタイトルブロック
 .sub-title-store{
@@ -129,7 +133,7 @@
   background-color: rgba( 255, 255, 255, 0.5);
   position: absolute;
   top: 60px;
-  left: -120px;
+  left: 30px;
   border-radius: 5px;
 }
 //ここまで店舗ログイン時
@@ -143,14 +147,20 @@
   background-size: cover;
   background-position: 0px 190px;
 }
-
+//navバー設定
 .nav-left {
   font-size: 18px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   width: 50vw;
-  padding: 1vh 0;
+  padding: 3vh 0;
+}
+//リンク項目覧設定
+.lists-left{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+list-style: none;
 }
 
 //ヘッダー右側ブロック
@@ -162,14 +172,20 @@
   background-position: 0px 135px;
   position: relative;
 }
-
+//navバー設定
 .nav-right {
   font-size: 18px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   width: 50vw;
-  padding: 1vh 0;
+  padding: 3vh 0;
+}
+//リンク項目覧設定
+.lists-right{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+list-style: none;
 }
 
 //サイトタイトル
@@ -191,14 +207,39 @@
 }
 //ここまで未ログイン時
 
-.lists-right {
-display: flex;
-margin: 0 5px 0 0;
+//各navリンク設定
+.nav-list{
+  background-color: rgba( 255, 255, 255, 0.5);
+  border-radius: 5px;
+  margin: 0 5px 5px 0;
 }
 
+//フッター固定用設定
+.body{
+  padding-bottom: 60px;
+  box-sizing: border-box;
+}
 
+footer {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background-color: #848282;
+  position: fixed;//フッター固定用
+  bottom: 0;//フッター固定用
+}
 
-.pagination {
-  justify-content: center;
+.footer-text {
+  color: #fff;
+}
+
+//無限スクロール用
+nav.pagination {
+  display: none;
+}
+//無限スクロール用
+.scroll-list {
+  padding: 0;
 }
 

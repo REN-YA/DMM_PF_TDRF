@@ -4,8 +4,8 @@ class SearchsController < ApplicationController
     @content = params["content"]
     @method = params["method"]
     @records = search_for(@model, @content, @method)
-    @users = User.all
-    @stores = Store.all
+    @users = User.page(params[:page]).per(20)
+    @stores = Store.page(params[:page]).per(20)
   end
 
   private
