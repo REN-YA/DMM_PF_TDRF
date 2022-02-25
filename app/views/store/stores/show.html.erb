@@ -10,6 +10,8 @@
   <div class="edit-index">
     <% if @store == current_store %>
     <%=  link_to "編集する", edit_store_store_path(current_store.id), class: "btn btn-success" %>
+    <%= link_to "ジャンル登録",store_genres_path, class: 'btn btn-primary' %>
+    <%= link_to '商品登録', new_store_product_path , class: "btn btn-primary" %>
     <% end %>
     <%= link_to '商品一覧画面', store_products_path, class: 'btn btn-primary' %>
   </div >
