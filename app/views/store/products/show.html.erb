@@ -9,6 +9,7 @@
       <%= link_to '編集', edit_store_product_path(@product), class: 'btn-lg btn-primary' %>
       <%= link_to '削除', store_product_path(@product), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger "%>
     <% end %>
+    <%= link_to '商品一覧画面', store_products_path(@product.store_id), class: 'btn btn-primary' %>
   </div>
 
 　<div class='row justify-content-center'>
@@ -17,7 +18,12 @@
 　  </div>
 　  <div class="product_information col-5">
 　    <div class="product_information_show">
-　      店舗名 <span class="information_box"><%= @product.store.name %></span>
+　      店舗名
+　      <span class="information_box">
+　        <%= link_to store_store_path(@product.store_id) do %>
+　         <%= @product.store.name %>
+　        <% end %>
+　      </span>
 　    </div>
 　    <div class="product_information_show">
 　      商品名 <span class="information_box"><%= @product.name %></span>
@@ -40,7 +46,7 @@
         総レビュー数<span class="information_box"><%= @reviews.count %></span>
       </div>
       <div class="product_information_show">
-        
+
       </div>
 　  </div>
 　</div>
