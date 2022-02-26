@@ -7,7 +7,7 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reviews = Review.page(params[:page]).per(20)
+    @reviews = Review.all
     #自身の全レビューに対するいいねの総数
     @user_reviews = @user.reviews
       @review_favorites_count = 0

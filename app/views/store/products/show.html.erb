@@ -46,8 +46,8 @@
 　      総レビュー数<span class="information_box"><%= @reviews.count %></span>
       </div>
       <div class="product_information_show">
-
-      </div>
+　      総料理評価<span class="review-evaluation" data-score="<%= @reviews.sum(:evaluation).fdiv(@reviews.count)%>"></span>
+　    </div>
 　  </div>
 　</div>
 
@@ -93,7 +93,7 @@
                 <td><%= review.contents %></td>
               </tr>
           <% end %>
-          <%= paginate @reviews %>
+
           </div>
         </tbody>
       </table>
