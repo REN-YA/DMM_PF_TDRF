@@ -8,11 +8,10 @@
         <th>店舗名</th>
         <th>総料理評価</th>
         <th>総レビュー数</th>
-        <th>ランキング</th>
       </tr>
     </thead>
     <tbody>
-    <div class="scroll-list jscroll"> 
+    <div class="scroll-list jscroll">
       <% stores.each do |store| %>
         <tr>
           <td class="text-center">
@@ -20,14 +19,24 @@
             <%= store.name %>
             <% end %>
           </td>
-          <td class="text-center">平均値</td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
+          <td class="text-center">
+            <span class="review-evaluation" data-score="<%= @reviews.sum(:evaluation).fdiv(@reviews.count)%>"></span>
+          </td>
+          <td class="text-center"><%= @reviews.count %></td>
         </tr>
       <% end %>
-      
+
     </div>
     </tbody>
   </table>
 </div>
 
+<script>
+  $('.review-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

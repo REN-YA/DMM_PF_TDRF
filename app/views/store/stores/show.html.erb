@@ -25,8 +25,9 @@
     <div class="info-genre-lank col-3">
       店舗ジャンル<span class="information_box"><%= @store.store_genres %></span>
     </div>
-    <div class="info-genre-lank col-3">
-      店舗ランキング<span class="information_box">位</span>
+    <div class="info-genre-lank col-4">
+      料理総平均評価
+      <span class="review-evaluation information_box" data-score="<%= @reviews.sum(:evaluation).fdiv(@reviews.count)%>"></span>
     </div>
   </div >
   <div class="row justify-content-center">
