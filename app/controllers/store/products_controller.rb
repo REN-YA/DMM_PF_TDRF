@@ -25,14 +25,7 @@ class Store::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @store = Store.find(@product.store_id)
     @review = Review.new
-    @reviews = Review.page(params[:page]).per(20)
-
-      # @product_reviews = @product.reviews
-      # @review_evaluation_count = 0
-      #   @product_reviews.each do |review|
-      #   @review_evaluation_count += review.evaluation.size
-      #   end
-      # @product_average = @review.evaluation_count
+    @reviews = Review.where(product_id: @product.id)
 
   end
 
