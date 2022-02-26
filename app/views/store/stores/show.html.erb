@@ -3,17 +3,17 @@
 </div>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="store col-8 text-center">
+    <div class="info-name col-4 text-center">
       <h4>店舗情報</h4>
     </div>
   </div >
   <div class="edit-index">
     <% if @store == current_store %>
-    <%=  link_to "編集する", edit_store_store_path(current_store.id), class: "btn btn-success" %>
-    <%= link_to "ジャンル登録",store_genres_path, class: 'btn btn-primary' %>
-    <%= link_to '商品登録', new_store_product_path , class: "btn btn-primary" %>
+    <%= link_to "編集する", edit_store_store_path(current_store.id), class: "btn setting_btn btn-success" %>
+    <%= link_to "ジャンル登録",store_genres_path, class: 'btn setting_btn btn-primary' %>
+    <%= link_to '商品登録', new_store_product_path , class: "btn setting_btn btn-primary" %>
     <% end %>
-    <%= link_to '商品一覧画面', store_products_path, class: 'btn btn-primary' %>
+    <%= link_to '商品一覧画面', store_products_path, class: 'btn setting_btn btn-primary' %>
   </div >
 
   <div class="row justify-content-center">
@@ -55,7 +55,6 @@
     </div>
   </div>
 
-
   <div class="list-user">
     <div class="table_title">
       <p class="row justify-content-center">レビュー</p>
@@ -64,6 +63,7 @@
         <thead class="thead">
           <tr>
             <th>投稿日</th>
+            <th>レビュー商品</th>
             <th>ユーザー名</th>
             <th>フォロワー数</th>
             <th>ユーザーランキング</th>
@@ -75,20 +75,31 @@
         <div class="scroll-list jscroll">
           <% @reviews.each do |review| %>
             <tr>
-              <td>
+              <td class="text-center">
                 <%= link_to user_review_path(review) do %>
                 <%= review.created_at.strftime('%Y/%m/%d/%T') %>
                 <% end %>
               </td>
-              <td>
+              <td class="text-center">
+                <%= link_to store_product_path(review.product_id) do %>
+                <%= review.product.name%>
+                <% end %>
+              </td>
+              <td class="text-center">
                 <%= link_to user_user_path(review.user_id) do %>
                 <%= review.user.name %>
                 <% end %>
               </td>
-              <td><%= link_to review.user.followers.count,user_user_followers_path(review.user_id) %></td>
-              <td>ランキング</td>
-              <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
-              <td><%= review.contents %></td>
+              <td class="text-center">
+                <%= link_to review.user.followers.count,user_user_followers_path(review.user_id) %>
+              </td>
+              <td class="text-center">
+                ランキング
+              </td>
+              <td class="review-evaluation" data-score="<%= review.evaluation %>"class="text-center"></td>
+              <td class="text-center">
+                <%= review.contents %>
+              </td>
             </tr>
           <% end %>
           <%= paginate @reviews %>

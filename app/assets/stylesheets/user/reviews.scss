@@ -56,18 +56,30 @@
     border: solid 3px #AAAAAA;
     border-radius: 10px;
 }
-//コメント覧用BOX
+
+.review_name{
+  　position: relative;
+    margin: 20px 0;
+    position: relative;
+    padding: 0.3em 1em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    background-color: #DDDDDD;
+}
+
 .contents_box{
   padding: 0.3em 1em;
-    margin: 2em 0;
+    margin: 5px 0;
     font-weight: bold;
     color: #333333;
     background: #FFF;
     border: solid 3px #AAAAAA;
     border-radius: 10px;
 }
+
+//ここまでレビューshowページ
 //コメント覧用BOX
-.review_new{
+.review_show{
     padding: 8px 8px;
     margin: 0.2em 0;
     color: #2c2c2f;
@@ -78,7 +90,6 @@
 }
 
 
-//ここまでレビューeditページ
 //ここからレビューeditページ
 .review_name{
   　position: relative;

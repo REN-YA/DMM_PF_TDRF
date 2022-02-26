@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="product_show col-8 text-center">
+    <div class="product_show col-6 text-center">
       <h2>商品詳細</h2>
     </div>
   </div>
   <div class='product_edit_delete_btn'>
     <% if @store == current_store %>
-      <%= link_to '編集', edit_store_product_path(@product), class: 'btn-lg btn-primary' %>
+      <%= link_to '編集', edit_store_product_path(@product), class: 'btn-lg btn-success' %>
       <%= link_to '削除', store_product_path(@product), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger "%>
     <% end %>
-    <%= link_to '商品一覧画面', store_products_path(@product.store_id), class: 'btn btn-primary' %>
+    <%= link_to '商品一覧', store_products_path(@product.store_id), class: 'btn-lg btn-primary' %>
   </div>
 
 　<div class='row justify-content-center'>
@@ -32,10 +32,10 @@
 　      ジャンル名 <span class="information_box"><%= @product.genre.name %></span>
 　    </div>
 　    <div class="product_information_show">
-　      価格<span class="information_box"><%= @product.selling_price*1.1.floor %>円</span>（税込）
+　      価格<span class="information_box"><%= @product.selling_price*1.1.floor %></span>円（税込）
       </div>
       <div class="product_information_show">
-      　販売ステータス
+　      販売ステータス
         <% if @product.is_selling == "on_sale" %>
           <span class="information_box text-success"><%= @product.is_selling_i18n %></span>
         <% else %>
@@ -43,7 +43,7 @@
         <% end %>
       </div>
       <div class="product_information_show">
-        総レビュー数<span class="information_box"><%= @reviews.count %></span>
+　      総レビュー数<span class="information_box"><%= @reviews.count %></span>
       </div>
       <div class="product_information_show">
 
@@ -51,7 +51,11 @@
 　  </div>
 　</div>
 
-<%= render 'user/reviews/new', review: @review%>
+<!--レビュー投稿フォームはユーザーがログインしている時のみ表示-->
+<% if user_signed_in? %>
+ <%= render 'user/reviews/new', review: @review%>
+<% end %>
+
 </div>
 </div>
 <div class="list-user">

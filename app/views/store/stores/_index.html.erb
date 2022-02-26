@@ -15,17 +15,17 @@
     <div class="scroll-list jscroll"> 
       <% stores.each do |store| %>
         <tr>
-          <td>
+          <td class="text-center">
             <%= link_to store_store_path(store.id) do %>
             <%= store.name %>
             <% end %>
           </td>
-          <td>平均値</td>
-          <td></td>
-          <td></td>
+          <td class="text-center">平均値</td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
         </tr>
       <% end %>
-      <%= paginate stores %>
+      
     </div>
     </tbody>
   </table>
