@@ -4,13 +4,124 @@
 
 
 @import "bootstrap";
-
-.icon_image {
-  width: 200px;
-  height: 200px;
-  //サイズ指定
-  border-radius: 100px;
-  //画像を丸くする
-  object-fit: cover;
-  //タテヨコ比を変えないままトリミング
+//ここからユーザーshowページ
+.user{
+  font-weight: 650;
+  font-size: 40px;
 }
+//ユーザーshowページ名
+.user_name{
+    margin: 0.5em 0;
+    position: relative;
+    padding: 0.3em 1em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    background-color: #DDDDDD;
+}
+.user_name:before, .user_name:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: black;
+}
+.user_name:before {left: 10px;}
+.user_name:after {right: 10px;}
+.user_name p {
+    margin: 0;
+    padding: 0;
+}
+//編集ボタン位置固定
+.edit-index {
+  position: absolute;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  top: 405px;
+  right: 20px;
+}
+
+.setting_btn{
+  margin: 5px 5px 0 0 ;
+}
+
+//フォローボタン用BOX
+.follow_box{
+    padding: 0.2em 0.5em;
+    margin: 0.8em 0;
+    background: #FFCC99	;
+    box-shadow: 0px 0px 0px 5px #FF9900;
+    border: dashed 3px white;
+    color:#999999;
+}
+.follow_box p {
+    margin: 0;
+    padding: 0;
+}
+
+//ユーザー情報表示BOX
+.information{
+  padding: 15px;
+}
+//ユーザー各情報表示用
+.information_box{
+  padding: 0.3em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #333333;/*文字色*/
+    background: #FFF;
+    border: solid 3px #AAAAAA;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
+//user_information内のレイアウト用
+.information_others_box{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+//user_information内のレイアウト用
+.information_others{
+  margin: 10px 10px 10px 0px;
+}
+
+//テーブル名
+.table_title{
+    padding: 8px 19px;
+    margin: 0.2em 0;
+    color: #2c2c2f;
+    background-color: #BBBBBB;
+    border-top: solid 5px #555555;
+    border-bottom: solid 5px #555555;
+}
+.table_title p {
+    margin: 0;
+    padding: 0;
+}
+//ここまでユーザーshowページ
+
+//ここからユーザーeditページ
+//ユーザーeditページ名
+.user_edit{
+  　position: relative;
+    margin: 0.5em 0;
+    position: relative;
+    padding: 0.3em 1em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    background-color: #DDDDDD;
+}
+.user_edit:before, .user_edit:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: black;
+}
+.user_edit:before {left: 10px;}
+.user_edit:after {right: 10px;}
+//ここまでユーザーeditページ

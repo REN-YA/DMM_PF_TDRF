@@ -1,3 +1,23 @@
 // Place all the styles related to the searchs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//ここからボタンデザイン
+.btn-flat-search {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #AAAAAA;
+  background: #FFCC00;
+  border-color:#DDDDDD;
+  transition: .4s;
+}
+
+.btn-flat-search:hover {
+  background: #FF9900;
+  color: #444444;
+  border-color:#DDDDDD;
+}
+//ここまでボタンデザイン

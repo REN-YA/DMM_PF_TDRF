@@ -5,17 +5,20 @@ class User::ReviewsController < ApplicationController
   end
 
   def create
+     @product = Product.find_by(params[:id])
    @review = Review.new(review_params)
      @review.user_id = current_user.id
     if @review.save
-      redirect_to user_review_path(@review.id)
+      redirect_to user_review_path(@review.user.id)
     else
-      render :new
+      redirect_to store_product_path(@product.id)
+
     end
   end
 
   def show
     @review = Review.find(params[:id])
+    @user = User.find(@review.user_id)
   end
 
   def edit

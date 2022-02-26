@@ -1,3 +1,24 @@
 // Place all the styles related to the user/relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+//フォローユーザー一覧ページ名
+.following{
+    padding: 8px 19px;
+    margin: 0.2em 0;
+    color: #2c2c2f;
+    background: #BBBBBB;
+    border-top: solid 5px #555555;
+    border-bottom: solid 5px #555555;
+}
+
+//フォロワーユーザー一覧ページ名
+.follower{
+    padding: 8px 19px;
+    margin: 0.2em 0;
+    color: #2c2c2f;
+    background: #BBBBBB;
+    border-top: solid 5px #555555;
+    border-bottom: solid 5px #555555;
+}

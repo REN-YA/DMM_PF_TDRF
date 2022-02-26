@@ -1,93 +1,69 @@
-<div>
-  <%= attachment_image_tag(@store, :image, :fill, 300, 300) %>
-  <% if @store == current_store %>
-  <%=  link_to "編集する", edit_store_store_path(current_store.id), class: "btn-sm btn-success" %>
-  <% end %>
-  <%= link_to '商品一覧画面', store_products_path, class: 'btn btn-primary' %>
+<div class="store-image">
+  <%= attachment_image_tag(@store, :image, :fill, 1000, 300) %>
 </div>
-
-<script type="text/javascript">
-  function initMap() {
-//latitude,longitudeから位置を特定
-    var test ={lat: <%= @store.latitude %>, lng: <%= @store.longitude %>};
-    console.log(test)
-    var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 15,
-              center: test
-              });
-    var transitLayer = new google.maps.TransitLayer();
-    transitLayer.setMap(map);
-
-    var contentString = '住所：<%= @store.address %>';
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-
- //Map上の指定した位置にピンを挿して表示する
-    var marker = new google.maps.Marker({
-                  position:test,
-                  map: map,
-                  title: contentString
-                 });
-
-     marker.addListener('click', function() {
-       infowindow.open(map, marker);
-     });
-  }
-</script>
-
-<script async defer
-              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDSekMzE_IeMXHP5Km0xWI7y6iv4YVPxys&callback=initMap">
-</script>
-
-<style type="text/css">
-  #map { height: 200px;
-         width: 70%;}
-</style>
-
-<div id="map"></div>
-
 <div class="container">
   <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-         <%= @store.name %>
-        <label class="form-label">店舗ジャンル</label><%= @store.store_genres %>
-        <label class="form-label">店舗ランキング</label>
-        </div>
+    <div class="info-name col-4 text-center">
+      <h4>店舗情報</h4>
+    </div>
+  </div >
+  <div class="edit-index">
+    <% if @store == current_store %>
+    <%= link_to "編集する", edit_store_store_path(current_store.id), class: "btn setting_btn btn-success" %>
+    <%= link_to "ジャンル登録",store_genres_path, class: 'btn setting_btn btn-primary' %>
+    <%= link_to '商品登録', new_store_product_path , class: "btn setting_btn btn-primary" %>
+    <% end %>
+    <%= link_to '商品一覧画面', store_products_path, class: 'btn setting_btn btn-primary' %>
+  </div >
+
+  <div class="row justify-content-center">
+    <div class="col-4">
+      店舗名<span class="information_box"><%= @store.name %></span>
+    </div >
+  </div >
+  <div class="row justify-content-center">
+    <div class="info-genre-lank col-3">
+      店舗ジャンル<span class="information_box"><%= @store.store_genres %></span>
+    </div>
+    <div class="info-genre-lank col-3">
+      店舗ランキング<span class="information_box">位</span>
+    </div>
+  </div >
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div class="information_left">
+      お問い合わせ電話番号<span class="information_box"><%= @store.telephone_number %></span>
+      </div>
+      <div class="information_left">
+      メールアドレス<span class="information_box"><%= @store.email %></span>
+      </div>
+      <div class="information_left">
+      営業時間<span class="information_box"><%= @store.business_hours %></span>
+      </div>
+      <div class="information_left">
+      ご予約サイ<span class="information_box">ト<%= @store.reservation_site %></span>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-        <label class="form-label">郵便番号</label><%= @store.post_code %>
-        <label class="form-label">店舗住所</label><%= @store.address %>
-        </div>
+    <div class="col-7">
+      <div class="information_right">
+      郵便番号<span class="information_box"><%= @store.post_code %></span>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-        <label class="form-label">お問い合わせ電話番号</label><%= @store.telephone_number %>
-        <label class="form-label">メールアドレス</label><%= @store.email %>
-        </div>
+      <div class="information_right">
+      店舗住所<span class="information_box"><%= @store.address %></span>
       </div>
+      <div id="map"></div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-        <label class="form-label">営業時間</label><%= @store.business_hours %>
-        <label class="form-label">ご予約サイト</label><%= @store.reservation_site %>
-        </div>
-      </div>
-    </div>
+  </div>
 
   <div class="list-user">
-      <p>レビュー</p>
+    <div class="table_title">
+      <p class="row justify-content-center">レビュー</p>
+    </div>
       <table class="table">
         <thead class="thead">
           <tr>
             <th>投稿日</th>
+            <th>レビュー商品</th>
             <th>ユーザー名</th>
             <th>フォロワー数</th>
             <th>ユーザーランキング</th>
@@ -96,24 +72,38 @@
           </tr>
         </thead>
         <tbody>
+        <div class="scroll-list jscroll">
           <% @reviews.each do |review| %>
-          <tr>
-            <td>
-              <%= link_to user_review_path(review) do %>
-              <%= review.created_at.strftime('%Y/%m/%d/%T') %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to user_user_path(review.user_id) do %>
-              <%= review.user.name %>
-              <% end %>
-            </td>
-            <td></td>
-            <td></td>
-            <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
-            <td><%= review.contents %></td>
-          </tr>
+            <tr>
+              <td class="text-center">
+                <%= link_to user_review_path(review) do %>
+                <%= review.created_at.strftime('%Y/%m/%d/%T') %>
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to store_product_path(review.product_id) do %>
+                <%= review.product.name%>
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to user_user_path(review.user_id) do %>
+                <%= review.user.name %>
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to review.user.followers.count,user_user_followers_path(review.user_id) %>
+              </td>
+              <td class="text-center">
+                ランキング
+              </td>
+              <td class="review-evaluation" data-score="<%= review.evaluation %>"class="text-center"></td>
+              <td class="text-center">
+                <%= review.contents %>
+              </td>
+            </tr>
           <% end %>
+          <%= paginate @reviews %>
+        </div>
         </tbody>
       </table>
   </div>
@@ -126,4 +116,34 @@
     },
     path: '/assets/'
   });
+</script>
+<script type="text/javascript">
+  function initMap() {
+//latitude,longitudeから位置を特定
+    var test ={lat: <%= @store.latitude %>, lng: <%= @store.longitude %>};
+    console.log(test)
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+    var contentString = '住所：<%= @store.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+ //Map上の指定した位置にピンを挿して表示する
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                  });
+
+     marker.addListener('click', function() {
+      infowindow.open(map, marker);
+      });
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>

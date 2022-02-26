@@ -71,7 +71,8 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'jquery-rails'
 gem 'enum_help'
-gem 'kaminari','~> 1.2.1'
+gem 'font-awesome-sass'
+gem 'kaminari'
 gem "geocoder"
 gem 'dotenv-rails'
 group :production do

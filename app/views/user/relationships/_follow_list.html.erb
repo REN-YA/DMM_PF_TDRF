@@ -1,25 +1,27 @@
+<div class="scroll-list jscroll">
+  <% users.each do |user| %>
+    <table class='table'>
+      <thead class='thead'>
+        <tr>
+          <th>ユーザー名</th>
+          <th>フォロー数</th>
+          <th>フォローワー数</th>
+          <th>ユーザーランキング</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to user_user_path(user.id) do %>
+            <%= user.name %>
+            <% end %>
+          </td>
+          <td>フォロー数:<%= link_to user.followings.count,user_user_followings_path(user.id) %></td>
+          <td>フォロワー数:<%= link_to user.followers.count,user_user_followers_path(user.id) %></td>
+          <td>ユーザーランキング</td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
 
-    <% users.each do |user| %>
-      <table class='table'>
-        <thead>
-          <tr>
-            <th>ユーザー名</th>
-            <th>フォロー数</th>
-            <th>フォローワー数</th>
-            <th>ユーザーランキング</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <%= link_to user_user_path(user.id) do %>
-              <%= user.name %>
-              <% end %>
-            </td>
-            <td>フォロー数:<%= user.followings.count %></td>
-            <td>フォロワー数:<%= user.followers.count %></td>
-             <td>ユーザーランキング</td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
+</div>

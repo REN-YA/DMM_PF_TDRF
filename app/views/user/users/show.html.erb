@@ -1,75 +1,121 @@
+<br>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="top col-12">
-      <h1><%= @user.name %>詳細</h1>
-      <% if @user == current_user %>
-        <%=  link_to "編集する", edit_user_user_path, class: "btn-sm btn-success" %>
-      <% end %>
-      <% if current_user.following?(@user) %>
-        <%= link_to "フォロー外す", user_user_relationship_path(@user.id), method: :delete %>
-      <% else %>
-        <%= link_to "フォローする", user_user_relationships_path(@user.id), method: :post %>
-      <% end %>
+    <div class="user_name col-8 text-center">
+      <h2><p class="user"><%= @user.name %></p> ユーザー情報</h2>
     </div>
   </div>
-    <div>
+  <div class="edit">
+      <% if @user == current_user %>
+        <%=  link_to "編集する", edit_user_user_path(@user), class: "btn-lg btn-success" %>
+      <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <% if current_user %>
+    <span class="follow_box">
+      <p>
+        <% if current_user.following?(@user) %>
+          <%= link_to "フォロー外す", user_user_relationship_path(@user.id), method: :delete %>
+        <% else %>
+          <%= link_to "フォローする", user_user_relationships_path(@user.id), method: :post %>
+        <% end %>
+      </p>
+    <span>
+    <% end %>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="user_image col-4">
       <%= attachment_image_tag(@user, :image, :fill, 300, 300) %>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-        <label class="form-label">ユーザー名</label><%= @user.name %>
-        <label class="form-label">ユーザーランキング</label>
+    <div class="user_information col-5">
+        <p>ユーザー名 <span class="information_box"><%= @user.name %></span></p>
+      <div class="information_others_box">
+        <div class="information_others">フォロー数
+          <span class="information_box">
+            <%= link_to @user.followings.count,user_user_followings_path(@user.id) %>
+          </span>
+        </div>
+        <div class="information_others">フォロワー数
+          <span class="information_box">
+            <%= link_to @user.followers.count,user_user_followers_path(@user.id) %>
+          </span>
+        </div>
+        <div class="information_others">総いいね数
+          <span class="information_box">
+            <%= @total_favorites %>
+          </span>
+        </div>
+        <div class="information_others">総レビュー数
+          <span class="information_box">
+            <%= @user.reviews.count %>
+          </span>
+        </div>
+        <div class="information_others">
+          レビュー平均いいね数
+          <span class="information_box">
+            <!--レビューがなく0の場合の例外設定-->
+            <% begin %>
+              <%= @total_favorites/@user.reviews.count.floor %>
+            <% rescue %>
+              <p>0</p>
+            <% end %>
+          </span>
         </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="form-group">
-        <label class="form-label">フォロー数</label>
-        <%= link_to @user.followings.count, user_user_followings_path(@user.id) %>
-        <label class="form-label">フォロワー数</label>
-        <%= link_to @user.followers.count, user_user_followers_path(@user.id) %>
-        <label class="form-label">総レビュー数</label>
-        </div>
-      </div>
-    </div>
+  </div>
 </div>
-<div  class="list-store">
-      <p>店舗一覧</p>
-      <table class="table">
-        <thead class="thead">
-          <tr>
-            <th>投稿日</th>
-            <th>店舗名</th>
-            <th>店舗ランキング</th>
-            <th>レビュー内容</th>
-            <th>評価</th>
-            <th>いいね</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @reviews.each do |review| %>
-          <tr>
-            <td>
-              <%= link_to user_review_path(review) do %>
-              <%= review.created_at.strftime('%Y/%m/%d/%T') %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to user_user_path(review.user_id) do %>
-              <%= review.user.name %>
-              <% end %>
-            </td>
-            <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
-            <td><%= review.contents %></td>
-            <td></td>
-            <td id="favorite_buttons_<%= review.id %>">
-              <%= render 'user/favorites/favorite', review: review %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
 
+<div  class="list-store">
+  <div class="table_title">
+    <p class="row justify-content-center">レビュー</p>
+  </div>
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th>投稿日</th>
+        <th>店舗名</th>
+        <th>評価</th>
+        <th>評価内容</th>
+        <th>いいね</th>
+      </tr>
+    </thead>
+    <tbody>
+    <div class="scroll-list jscroll">
+      <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <%= link_to user_review_path(review) do %>
+            <%= review.created_at.strftime('%Y/%m/%d/%T') %>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <%= link_to store_store_path(review.product.store_id) do %>
+            <%= review.product.store.name %>
+            <% end %>
+          </td class="text-center">
+          <td class="review-evaluation" data-score="<%= review.evaluation %>"class="text-center"></td>
+          <td class="text-center">
+            <%= review.contents %>
+          </td>
+          <td id="favorite_buttons_<%= review.id %>" class="text-center">
+            <%= render 'user/favorites/favorite', review: review %>
+          </td>
+        </tr>
+      <% end %>
+      <%= paginate @reviews %>
+    </div>
+    </tbody>
+  </table>
 </div>
+
+<script>
+  $('.review-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

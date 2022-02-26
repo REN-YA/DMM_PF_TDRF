@@ -1,14 +1,14 @@
 class Store::StoresController < ApplicationController
 
   def index
-    @users = User.all
-    @stores = Store.all
+    @users = User.page(params[:page]).per(20)
+    @stores = Store.page(params[:page]).per(20)
+    @reviews = Review.all
   end
 
   def show
     @store = Store.find(params[:id])
-    
-    @reviews = Review.all
+    @reviews = Review.page(params[:page]).per(20)
     @user = User.all
 
   end
@@ -20,7 +20,7 @@ class Store::StoresController < ApplicationController
   def update
     @store = current_store
     if @store.update(store_params)
-     redirect_to store_stores_path
+     redirect_to store_store_path
     else
      render 'edit'
     end
@@ -38,7 +38,7 @@ class Store::StoresController < ApplicationController
 
   private
   def store_params
-    params.require(:store).permit(:name, :email, :encrypted_password, :image_id, :store_genres, :post_code, :address, :business_hours, :reservation_site, :telephone_number, :latitude, :longitude)
+    params.require(:store).permit(:name, :email, :encrypted_password, :image, :store_genres, :post_code, :address, :business_hours, :reservation_site, :telephone_number, :latitude, :longitude)
   end
 
 end

@@ -1,21 +1,108 @@
-<h2>レビュー詳細</h2>
-<% if @store == current_store %>
- <%= link_to '編集', edit_user_review_path(@review), class: 'btn btn-primary mb-3' %>
- <%= link_to '削除', user_review_path(@review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger "%>
- <% end %>
-<div class='container'>
-　<div class='row'>
-　  <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
-　  <%= @review.product.name %>
-　  <%= @review.product.genre_id %>
-　  <%= @review.product.selling_price %>
-    <% if @review.product.is_selling == "on_sale" %>
-      <span class="text-success"><%= @review.product.is_selling_i18n %></span>
-    <% else %>
-      <span class="text-secondary"><%= @review.product_id.is_selling_i18n %></span>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="review_name font-weight-normal mt-5 mb-5 text-center">
+    <h1>レビュー詳細</h1>
+    </div>
+  </div>
+  <div class="edit_delete">
+    <% if @user == current_user %>
+      <%= link_to '編集', edit_user_review_path(@review), class: 'btn-lg btn-success' %>
+      <%= link_to '削除', user_review_path(@review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger "%>
     <% end %>
+  </div>
+
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th>投稿日</th>
+        <th>投稿ユーザー</th>
+        <th>フォロー数</th>
+        <th>フォロワー数</th>
+        <th>いいね</th>
+        <th>1レビューの平均いいね</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to user_review_path(@review) do %>
+          <%= @review.created_at.strftime('%Y/%m/%d/%T') %>
+          <% end %>
+        </td>
+        <td class="text-center">
+          <%= link_to user_user_path(@review.user_id) do %>
+          <%= @review.user.name %>
+          <% end %>
+        </td>
+        <td class="text-center">
+          <%= link_to @user.followings.count,user_user_followings_path(@user.id) %>
+        </td>
+        <td class="text-center">
+          <%= link_to @user.followers.count,user_user_followers_path(@user.id) %>
+        </td>
+        <td id="favorite_buttons <%= @review.id %>"class="text-center">
+          <%= render 'user/favorites/favorite', review: @review %>
+        </td>
+        <td class="text-center">
+          <% begin %>
+            <%= @total_favorites/@user.reviews.count.floor %>
+          <% rescue %>
+            <p>0</p>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!--レビュー投稿内容-->
+  <div class="row justify-content-center">
+    <div class="review_show col-6 text-center">
+      <h4>レビュー内容</h4>
+    </div>
+  </div>
+  <div class="contents_box row justify-content-center">
     <%= @review.contents %>
-    <span class="review-evaluation" data-score="<%= @review.evaluation %>"></span>
+  </div>
+
+　<div class='row justify-content-center'>
+　  <div class="product_image col-4">
+　    <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
+　  </div>
+　  <div class="review_information col-6">
+　    <div class="information_show">
+　      店舗名
+　      <span class="information_box">
+　        <%= link_to store_store_path(@review.product.store_id) do %>
+　          <%= @review.product.store.name %>
+　        <% end %>
+　       </span>
+　    </div>
+　    <div class="information_show">
+　      料理評価<span class="review-evaluation" data-score="<%= @review.evaluation %>"></span>
+　    </div>
+　    <div class="information_show">
+　      料理名
+　       <span class="information_box">
+　         <%= link_to store_product_path(@review.product_id) do %>
+　           <%= @review.product.name %>
+　         <% end %>
+　       </span>
+　    </div>
+　    <div class="information_show">
+　      料理ジャンル<span class="information_box"><%= @review.product.genre.name %></span>
+　    </div>
+　    <div class="information_show">
+　      価格<span class="information_box"><%= @review.product.selling_price*1.1.floor %></span>円（税込）
+　    </div>
+　    <div class="information_show">
+　      販売ステータス
+  　     <% if @review.product.is_selling == "on_sale" %>
+          <span class="information_box text-success"><%= @review.product.is_selling_i18n %></span>
+        <% else %>
+          <span class="information_box text-secondary"><%= @review.product_id.is_selling_i18n %></span>
+        <% end %>
+　    </div>
+    </div>
 　</div>
 </div>
 <script>

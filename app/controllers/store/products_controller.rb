@@ -18,14 +18,22 @@ class Store::ProductsController < ApplicationController
   def index
     @genres = Genre.all
     @products = Product.all
+    @store = current_store
   end
 
   def show
     @product = Product.find(params[:id])
     @store = Store.find(@product.store_id)
     @review = Review.new
-    @reviews = Review.all
-    @user = User.all
+    @reviews = Review.page(params[:page]).per(20)
+
+      # @product_reviews = @product.reviews
+      # @review_evaluation_count = 0
+      #   @product_reviews.each do |review|
+      #   @review_evaluation_count += review.evaluation.size
+      #   end
+      # @product_average = @review.evaluation_count
+
   end
 
   def edit
@@ -51,6 +59,10 @@ class Store::ProductsController < ApplicationController
    private
   def product_params
     params.require(:product).permit(:store_id, :genre_id, :name, :image, :selling_price, :is_selling)
+  end
+
+  def review_params
+      params.require(:review).permit(:user_id, :product_id, :contents, :evaluation )
   end
 
 end
