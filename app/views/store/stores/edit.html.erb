@@ -11,19 +11,19 @@
       </div>
       <div class="field">
         <%= f.label :店舗名 %><br />
-        <%= f.text_field :name, autofocus: true %>
+        <%= f.text_field :name, autofocus: true , size: "40x20"%>
       </div>
       <div class="field">
         <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40x20" %>
       </div>
       <div class="field">
         <%= f.label :店舗ジャンル %><br />
-        <%= f.text_field :store_genres, autofocus: true %>
+        <%= f.text_field :store_genres, autofocus: true, size: "40x20" %>
       </div>
       <div class="field">
         <%= f.label :郵便番号 %><br />
-        <%= f.text_field :post_code, autofocus: true %>
+        <%= f.text_field :post_code, autofocus: true, size: "40x20" %>
       </div>
       <div class="field">
         <%= f.label :住所 %><br />
@@ -39,7 +39,7 @@
       </div>
       <div class="field">
         <%= f.label :お問い合わせ電話番号 %><br />
-        <%= f.text_field :telephone_number, autofocus: true %>
+        <%= f.text_field :telephone_number, autofocus: true, size: "30x20" %>
       </div>
       <br>
         <%= f.submit "変更を保存",class: 'btn btn-primary' %>

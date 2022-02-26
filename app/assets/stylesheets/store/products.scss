@@ -87,7 +87,7 @@
 .product_edit:after {right: 10px;}
 
 //ジャンル見出し
-.genre_title{
+.genre-name{
     height: 50px;
     padding: 5px;
     margin: 5px;
@@ -96,7 +96,7 @@
     border-top: solid 5px #555555;
     border-bottom: solid 5px #555555;
 }
-.genre_title h2 {
+.genre_title h3 {
     margin: 0;
     padding: 0;
 }
@@ -108,11 +108,30 @@
   right: 30px;
 }
 
+
 //ここまでcurrent_storeがログインしている時
 
 .product-list{
-  display: flex;
-  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.product{
+  margin-left: 5px ;
+}
+// //各項目間隔設定
+// .product_review_box{
+//   margin: 0.5px 0px 0.5px 0px;
+// }
+
+//商品一覧レビュー件数表示用
+.review_count_box{
+  padding: 0.3em 1em;
+    margin-left: 5px;
+    font-weight: bold;
+    color: #333333;
+    background: #FFF;
+    border: solid 3px #AAAAAA;
+    border-radius: 10px;
 }
 
 //商品詳細ページ名
@@ -150,7 +169,7 @@
 
 //各項目間隔設定
 .product_information_show{
-  margin: 0.5px 0px 0.5px 0px;
+  margin: 0.5px 0px 0.5px 5px;
 }
 
 //テーブル名
@@ -161,4 +180,10 @@
     background-color: #BBBBBB;
     border-top: solid 5px #555555;
     border-bottom: solid 5px #555555;
+}
+
+.product_edit_delete_btn{
+  position: absolute;
+  top: 133px;
+  right: 22px;
 }

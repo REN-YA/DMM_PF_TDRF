@@ -11,7 +11,6 @@
 }
 //ユーザーshowページ名
 .user_name{
-  　position: relative;
     margin: 0.5em 0;
     position: relative;
     padding: 0.3em 1em;
@@ -37,8 +36,15 @@
 //編集ボタン位置固定
 .edit-index {
   position: absolute;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
   top: 405px;
-  right: 65px;
+  right: 20px;
+}
+
+.setting_btn{
+  margin: 5px 5px 0 0 ;
 }
 
 //フォローボタン用BOX

@@ -16,12 +16,12 @@
             <%= user.name %>
             <% end %>
           </td>
-          <td>フォロー数:<%= user.followings.count %></td>
-          <td>フォロワー数:<%= user.followers.count %></td>
+          <td>フォロー数:<%= link_to user.followings.count,user_user_followings_path(user.id) %></td>
+          <td>フォロワー数:<%= link_to user.followers.count,user_user_followers_path(user.id) %></td>
           <td>ユーザーランキング</td>
         </tr>
       </tbody>
     </table>
   <% end %>
-  <%= paginate users %>
+
 </div>

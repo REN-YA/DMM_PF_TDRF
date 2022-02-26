@@ -8,24 +8,34 @@
         <th>ユーザー名</th>
         <th>フォロー数</th>
         <th>フォロワー数</th>
-        <th>ランキング</th>
+        <th>1レビューの平均いいね</th>
       </tr>
     </thead>
     <tbody>
     <div class="scroll-list jscroll">
       <% users.each do |user| %>
         <tr>
-          <td>
+          <td class="text-center">
             <%= link_to user_user_path(user.id) do %>
             <%= user.name %>
             <% end %>
           </td>
-          <td><%= link_to user.followings.count,user_user_followings_path(user.id) %></td>
-          <td><%= link_to user.followers.count,user_user_followers_path(user.id) %></td>
-          <td></td>
+          <td class="text-center">
+            <%= link_to user.followings.count,user_user_followings_path(user.id) %>
+          </td>
+          <td class="text-center">
+            <%= link_to user.followers.count,user_user_followers_path(user.id) %>
+            </td>
+          <td class="text-center">
+            <% begin %>
+              <%= @total_favorites/@user.reviews.count.floor %>
+            <% rescue %>
+              <p>0</p>
+            <% end %>
+          </td>
         </tr>
       <% end %>
-      <%= paginate users %>
+
     </div>
     </tbody>
   </table>

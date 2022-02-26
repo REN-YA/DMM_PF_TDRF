@@ -2,7 +2,7 @@
   <div class='row justify-content-center'>
     <h1 class="font-weight-normal mt-5 mb-5">店舗登録</h1>
   </div>
-  
+
   <div class='row justify-content-center'>
     <div class='col-4'>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -13,46 +13,46 @@
         </div>
         <div class="field">
           <%= f.label :店舗名 %><br />
-          <%= f.text_field :name, autofocus: true %>
+          <%= f.text_field :name, autofocus: true, placeholder: "店舗名", size: "40x20" %>
         </div>
         <div class="field">
           <%= f.label :メールアドレス %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス【例：〇〇〇〇@gmail.com】", size: "40x20" %>
         </div>
         <div class="field">
           <%= f.label :店舗ジャンル %><br />
-          <%= f.text_field :store_genres, autofocus: true %>
+          <%= f.text_field :store_genres, autofocus: true, placeholder: "店舗ジャンル名【例：ダイニング等】" , size: "40x20" %>
         </div>
         <div class="field">
           <%= f.label :郵便番号 %><br />
-          <%= f.text_field :post_code, autofocus: true %>
+          <%= f.text_field :post_code, autofocus: true, placeholder: "郵便番号【例：〇〇〇-〇〇〇〇】" , size: "40x20" %>
         </div>
         <div class="field">
           <%= f.label :住所 %><br />
-          <%= f.text_field :address, autofocus: true %>
+          <%= f.text_field :address, autofocus: true, placeholder: "住所【例：〇〇府〇〇市〇〇区〇〇町 〇-〇〇-〇 建物名 部屋番号等】", size: "60x20" %>
         </div>
         <div class="field">
           <%= f.label :営業時間 %><br />
-          <%= f.text_field :business_hours, autofocus: true %>
+          <%= f.text_field :business_hours, autofocus: true, placeholder: "営業時間【例：ランチ11〜16 ディナー17〜23】", size: "40x20" %>
         </div>
         <div class="field">
           <%= f.label :ご予約サイト%><br />
-          <%= f.text_field :reservation_site, autofocus: true %>
+          <%= f.text_field :reservation_site, autofocus: true, placeholder: "ご予約サイト【各グルメサイトや自社サイトURL】", size: "50x20" %>
         </div>
         <div class="field">
           <%= f.label :お問い合わせ電話番号 %><br />
-          <%= f.text_field :telephone_number, autofocus: true %>
+          <%= f.text_field :telephone_number, autofocus: true, placeholder: "電話番号【予約受付電話番号等】", size: "30x20"%>
         </div>
         <div class="field">
-          <%= f.label :password %>
+          <%= f.label :パスワード %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "登録パスワード" %>
         </div>
         <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.label :パスワード【確認用】 %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "登録パスワード確認用" %>
         </div>
         <div class="actions">
           <%= f.submit "Sign up", class: 'btn btn-primary' %>
