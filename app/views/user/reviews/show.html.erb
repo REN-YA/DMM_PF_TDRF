@@ -64,46 +64,46 @@
     <%= @review.contents %>
   </div>
 
-　<div class='row justify-content-center'>
-　  <div class="product_image col-4">
-　    <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
-　  </div>
-　  <div class="review_information col-6">
-　    <div class="information_show">
-　      店舗名
-　      <span class="information_box">
-　        <%= link_to store_store_path(@review.product.store_id) do %>
-　          <%= @review.product.store.name %>
-　        <% end %>
-　       </span>
-　    </div>
-　    <div class="information_show">
-　      料理評価<span class="review-evaluation" data-score="<%= @review.evaluation %>"></span>
-　    </div>
-　    <div class="information_show">
-　      料理名
-　       <span class="information_box">
-　         <%= link_to store_product_path(@review.product_id) do %>
-　           <%= @review.product.name %>
-　         <% end %>
-　       </span>
-　    </div>
-　    <div class="information_show">
-　      料理ジャンル<span class="information_box"><%= @review.product.genre.name %></span>
-　    </div>
-　    <div class="information_show">
-　      価格<span class="information_box"><%= @review.product.selling_price*1.1.floor %></span>円（税込）
-　    </div>
-　    <div class="information_show">
-　      販売ステータス
-  　     <% if @review.product.is_selling == "on_sale" %>
+  <div class='row justify-content-center'>
+    <div class="product_image col-4">
+      <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
+    </div>
+    <div class="review_information col-6">
+      <div class="information_show">
+        店舗名
+        <span class="information_box">
+          <%= link_to store_store_path(@review.product.store_id) do %>
+            <%= @review.product.store.name %>
+        <% end %>
+           </span>
+      </div>
+      <div class="information_show">
+      料理評価<span class="review-evaluation" data-score="<%= @review.evaluation %>"></span>
+      </div>
+      <div class="information_show">
+        料理名
+         <span class="information_box">
+           <%= link_to store_product_path(@review.product_id) do %>
+             <%= @review.product.name %>
+           <% end %>
+         </span>
+      </div>
+      <div class="information_show">
+        料理ジャンル<span class="information_box"><%= @review.product.genre.name %></span>
+      </div>
+      <div class="information_show">
+        価格<span class="information_box"><%= @review.product.selling_price*1.1.floor %></span>円（税込）
+      </div>
+      <div class="information_show">
+        販売ステータス
+         <% if @review.product.is_selling == "on_sale" %>
           <span class="information_box text-success"><%= @review.product.is_selling_i18n %></span>
         <% else %>
           <span class="information_box text-secondary"><%= @review.product_id.is_selling_i18n %></span>
         <% end %>
-　    </div>
+      </div>
     </div>
-　</div>
+  </div>
 </div>
 <script>
   $('.review-evaluation').raty({
