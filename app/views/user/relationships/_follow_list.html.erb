@@ -1,5 +1,4 @@
 <div class="scroll-list jscroll">
-  <% users.each do |user| %>
     <table class='table'>
       <thead class='thead'>
         <tr>
@@ -10,6 +9,7 @@
         </tr>
       </thead>
       <tbody>
+      <% users.each do |user| %>
         <tr>
           <td>
             <%= link_to user_user_path(user.id) do %>
@@ -20,8 +20,7 @@
           <td>フォロワー数:<%= link_to user.followers.count,user_user_followers_path(user.id) %></td>
           <td>ユーザーランキング</td>
         </tr>
+      <% end %>
       </tbody>
     </table>
-  <% end %>
-
 </div>
