@@ -4,6 +4,16 @@
       <h2>ジャンル編集</h2>
     </div>
   </div>
+
+  <% if @genre.errors.any? %>
+    <div class = "alert">
+      <%= @genre.errors.count %>件のエラーが発生しました
+      <% @genre.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class='row justify-content-center'>
     <div class='col-4 text-center'>
       <%= form_with model:@genre, url: store_genre_path, local: true do |f| %>

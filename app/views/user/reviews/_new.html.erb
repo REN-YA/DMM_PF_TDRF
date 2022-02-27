@@ -4,6 +4,16 @@
       <h4>レビューする</h4>
     </div>
   </div>
+
+  <% if review.errors.any? %>
+    <div class = "alert">
+      <%= review.errors.count %>件のエラーが発生しました
+      <% review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
+  <% end %>
+
     <%= form_with model: review, url: user_reviews_path, local:true do |f| %>
     <div class="row justify-content-center">
       <div id="evaluate_stars" class="col-3">
@@ -18,7 +28,7 @@
       <%= f.submit '投稿', class:"btn btn-warning" %>
     </div>
     <% end %>
-  
+
 
 
 <script>

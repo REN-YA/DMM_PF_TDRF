@@ -1,9 +1,19 @@
+
 <div class='container'>
   <div class="row justify-content-center">
     <div class="genre col-8 text-center">
       <h2>ジャンル作成&一覧</h2>
     </div>
   </div>
+
+  <% if @genre.errors.any? %>
+    <div class = "alert">
+      <%= @genre.errors.count %>件のエラーが発生しました
+      <% @genre.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
 
 　<div class='row'>
     <div class='col-md-3'>
@@ -29,7 +39,7 @@
         <tbody>
           <% @genres.each do |genre| %>
           <tr>
-            <td><%= genre.name %></td>
+            <td><%= genre.genre.name %></td>
             <td><%= link_to '編集', edit_store_genre_path(genre), class: 'btn-lg btn-success' %></td>
             <td><%= link_to '削除', store_genre_path(genre), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger "%></td>
           </tr>

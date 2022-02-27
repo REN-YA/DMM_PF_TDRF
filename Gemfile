@@ -64,7 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~> 4.5'
 gem 'dotenv-rails'
-gem 'cancancan'
 gem 'devise'
 gem 'ransack'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
