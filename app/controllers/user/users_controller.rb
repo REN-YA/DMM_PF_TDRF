@@ -5,14 +5,7 @@ class User::UsersController < ApplicationController
   def index
     @users = User.all
     @stores = Store.page(params[:page]).per(20)
-    @reviews = Review.where(user_id: @user.id)
-    #自身の全レビューに対するいいねの総数
-    @user_reviews = @user.reviews
-      @review_favorites_count = 0
-      @user_reviews.each do |review|
-      @review_favorites_count += review.favorites.size
-      end
-      @total_favorites = @review_favorites_count
+    @reviews = Review.where(user_id: @users.ids)
   end
 
   def show
