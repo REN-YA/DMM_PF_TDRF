@@ -4,7 +4,7 @@
       <h2>商品一覧</h2>
     </div>
   </div>
-  　<% if @store == current_store %>
+    <% if @store == current_store %>
       <div class="new_product">
         <%= link_to '新規登録', new_store_product_path , class: "btn-lg btn-primary" %>
       </div>

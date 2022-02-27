@@ -5,22 +5,22 @@
     </div>
   </div>
 
-　<div class='row justify-content-center'>
-　  <div class="product_image col-4">
-　    <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
-　  </div>
-　  <div class="review_information col-4">
-　    <div class="information_edit">
-  　    料理名<span class="information_box"><%= @review.product.name %></span>
-  　   </div>
-  　   <div class="information_edit">
-  　   ジャンル名<span class="information_box"><%= @review.product.genre_id %></span>
-  　   </div>
-  　   <div class="information_edit">
-  　   価格<span class="information_box"><%= @review.product.selling_price %>円</span>（税込）
-  　   </div>
-  　   <div class="information_edit">
-  　   販売ステータス
+  <div class='row justify-content-center'>
+    <div class="product_image col-4">
+      <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
+    </div>
+    <div class="review_information col-4">
+      <div class="information_edit">
+        料理名<span class="information_box"><%= @review.product.name %></span>
+       </div>
+       <div class="information_edit">
+     ジャンル名<span class="information_box"><%= @review.product.genre_id %></span>
+         </div>
+       <div class="information_edit">
+       価格<span class="information_box"><%= @review.product.selling_price %>円</span>（税込）
+       </div>
+     <div class="information_edit">
+       販売ステータス
         <% if @review.product.is_selling == "on_sale" %>
           <span class="information_box text-success"><%= @review.product.is_selling_i18n %></span>
         <% else %>
@@ -28,7 +28,7 @@
         <% end %>
       </div>
     </div>
-　</div>
+  </div>
 
   <div class="row justify-content-center">
     <div class="review_new col-8 text-center">

@@ -12,30 +12,30 @@
     <%= link_to '商品一覧', store_products_path(@product.store_id), class: 'btn-lg btn-primary' %>
   </div>
 
-　<div class='row justify-content-center'>
-　  <div  class="product_image col-4">
-　    <%= attachment_image_tag(@product, :image, :fill, 300, 300) %>
-　  </div>
-　  <div class="product_information col-5">
-　    <div class="product_information_show">
-　      店舗名
-　      <span class="information_box">
-　        <%= link_to store_store_path(@product.store_id) do %>
-　         <%= @product.store.name %>
-　        <% end %>
-　      </span>
-　    </div>
-　    <div class="product_information_show">
-　      商品名 <span class="information_box"><%= @product.name %></span>
-　    </div>
-　    <div class="product_information_show">
-　      ジャンル名 <span class="information_box"><%= @product.genre.name %></span>
-　    </div>
-　    <div class="product_information_show">
-　      価格<span class="information_box"><%= @product.selling_price*1.1.floor %></span>円（税込）
+  <div class='row justify-content-center'>
+    <div  class="product_image col-4">
+      <%= attachment_image_tag(@product, :image, :fill, 300, 300) %>
+    </div>
+    <div class="product_information col-5">
+      <div class="product_information_show">
+        店舗名
+        <span class="information_box">
+          <%= link_to store_store_path(@product.store_id) do %>
+           <%= @product.store.name %>
+          <% end %>
+        </span>
+    </div>
+        <div class="product_information_show">
+        商品名 <span class="information_box"><%= @product.name %></span>
+      </div>
+    <div class="product_information_show">
+          ジャンル名 <span class="information_box"><%= @product.genre.name %></span>
       </div>
       <div class="product_information_show">
-　      販売ステータス
+        価格<span class="information_box"><%= @product.selling_price*1.1.floor %></span>円（税込）
+      </div>
+      <div class="product_information_show">
+              販売ステータス
         <% if @product.is_selling == "on_sale" %>
           <span class="information_box text-success"><%= @product.is_selling_i18n %></span>
         <% else %>
@@ -43,13 +43,13 @@
         <% end %>
       </div>
       <div class="product_information_show">
-　      総レビュー数<span class="information_box"><%= @reviews.count %></span>
-      </div>
+        総レビュー数<span class="information_box"><%= @reviews.count %></span>
+    </div>
       <div class="product_information_show">
-　      総料理評価<span class="review-evaluation" data-score="<%= @reviews.sum(:evaluation).fdiv(@reviews.count)%>"></span>
-　    </div>
-　  </div>
-　</div>
+        総料理評価<span class="review-evaluation" data-score="<%= @reviews.sum(:evaluation).fdiv(@reviews.count)%>"></span>
+      </div>
+    </div>
+  </div>
 
 <!--レビュー投稿フォームはユーザーがログインしている時のみ表示-->
 <% if user_signed_in? %>
