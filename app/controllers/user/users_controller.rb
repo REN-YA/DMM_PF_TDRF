@@ -1,13 +1,16 @@
 class User::UsersController < ApplicationController
+   before_action :correct_user,only: [:edit,:withdrawal]
+
 
   def index
-    @users = User.page(params[:page]).per(20)
+
+    @users = User.all
     @stores = Store.page(params[:page]).per(20)
   end
 
   def show
     @user = User.find(params[:id])
-    @reviews = Review.all
+    @reviews = Review.where(user_id: @user.id)
     #自身の全レビューに対するいいねの総数
     @user_reviews = @user.reviews
       @review_favorites_count = 0
@@ -40,6 +43,12 @@ class User::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user.id
+      redirect_to root_path
+    end
+  end
 
 
   private

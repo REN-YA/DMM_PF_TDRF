@@ -1,4 +1,5 @@
 class User::ReviewsController < ApplicationController
+  before_action :correct_review,only: [:edit,:destroy]
 
   def new
     @review = Review.new
@@ -6,12 +7,13 @@ class User::ReviewsController < ApplicationController
 
   def create
      @product = Product.find_by(params[:id])
-   @review = Review.new(review_params)
+     @review = Review.new(review_params)
      @review.user_id = current_user.id
     if @review.save
       redirect_to user_review_path(@review.user.id)
     else
-      redirect_to store_product_path(@product.id)
+      @reviews = Review.where(product_id: @product.id)
+      render "/store/products/show"
 
     end
   end
@@ -38,6 +40,13 @@ class User::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     redirect_to store_products_path
+  end
+
+  def correct_review
+        @review = Review.find(params[:id])
+    unless @review.user.id == current_user.id
+      redirect_to root_path
+    end
   end
 
   private

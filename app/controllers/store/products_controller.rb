@@ -1,4 +1,5 @@
 class Store::ProductsController < ApplicationController
+  # before_action :correct_product,only: [:new,:edit,:destroy]
 
   def new
     @product = Product.new
@@ -48,6 +49,13 @@ class Store::ProductsController < ApplicationController
     @product.destroy
     redirect_to store_products_path
   end
+
+  # def correct_product
+  #   @product = Product.find(params[:id])
+  #   unless @product.store.id == current_store.id
+  #     redirect_to root_path
+  #   end
+  # end
 
    private
   def product_params

@@ -17,10 +17,13 @@
 @import "bootstrap";
 
 //サイト背景画像設定
-  // background-image: image-url('backgrand-image.jpeg');
-  // width: 100%;
-  // min-height: 100vh;
-  // background-size: cover;
+.main{
+  background-image: image-url('backgrand-image.jpeg');
+  background-color: rgba( 255, 255, 255, 0.5);
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+}
 //
 .header{
   width: 100vw;
@@ -249,3 +252,10 @@ nav.pagination {
   padding: 0;
 }
 
+.alert {
+    color:#262626;
+    background:#FFEBE8;
+    text-align: center;
+    border:2px solid #990000;
+    padding:12px; font-weight:850;
+  }

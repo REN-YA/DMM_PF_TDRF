@@ -1,5 +1,5 @@
-<div class="store-image">
-  <%= attachment_image_tag(@store, :image, :fill, 1000, 300) %>
+<div class="store-image row justify-content-center">
+  <%= attachment_image_tag(@store, :image, :fill, 1100, 300) %>
 </div>
 <div class="container">
   <div class="row justify-content-center">
@@ -17,7 +17,7 @@
   </div >
 
   <div class="row justify-content-center">
-    <div class="col-4">
+    <div class="col-4 center">
       店舗名<span class="information_box"><%= @store.name %></span>
     </div >
   </div >
@@ -42,7 +42,7 @@
       営業時間<span class="information_box"><%= @store.business_hours %></span>
       </div>
       <div class="information_left">
-      ご予約サイ<span class="information_box">ト<%= @store.reservation_site %></span>
+      ご予約サイト<span class="information_box"><%= @store.reservation_site %></span>
       </div>
     </div>
     <div class="col-7">
@@ -103,7 +103,7 @@
               </td>
             </tr>
           <% end %>
-          <%= paginate @reviews %>
+
         </div>
         </tbody>
       </table>

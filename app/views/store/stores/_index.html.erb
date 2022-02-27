@@ -20,9 +20,9 @@
             <% end %>
           </td>
           <td class="text-center">
-            <span class="review-evaluation" data-score="<%= @reviews.sum(:evaluation).fdiv(@reviews.count)%>"></span>
+            <span class="review-evaluation" data-score="<%= Review.where(product_id: Product.where(store_id: store.id).ids).sum(:evaluation).fdiv(Review.where(product_id: Product.where(store_id: store.id).ids).count)%>"></span>
           </td>
-          <td class="text-center"><%= @reviews.count %></td>
+          <td class="text-center"><%= Review.where(product_id: Product.where(store_id: store.id).ids).count %></td>
         </tr>
       <% end %>
 
@@ -34,6 +34,7 @@
 <script>
   $('.review-evaluation').raty({
     readOnly: true,
+
     score: function() {
       return $(this).attr('data-score');
     },
