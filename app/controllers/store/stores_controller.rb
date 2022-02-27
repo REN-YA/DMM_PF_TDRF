@@ -3,7 +3,7 @@ class Store::StoresController < ApplicationController
 
   def index
     @users = User.page(params[:page]).per(20)
-    @stores = Stores.all
+    @stores = Store.all
   end
 
   def show
