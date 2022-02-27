@@ -28,11 +28,12 @@
             </td>
           <td class="text-center">
             <% begin %>
-              <%= @total_favorites/@user.reviews.count.floor %>
+              <%= user.reviews.map {|review| review.favorites.count}.sum / user.reviews.count %>
             <% rescue %>
               <p>0</p>
             <% end %>
           </td>
+
         </tr>
       <% end %>
 
