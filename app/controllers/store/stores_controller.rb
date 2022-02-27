@@ -1,16 +1,16 @@
 class Store::StoresController < ApplicationController
+  before_action :correct_store,only: [:edit,:withdrawal]
 
   def index
     @users = User.page(params[:page]).per(20)
-    @stores = Store.page(params[:page]).per(20)
-    @reviews = Review.all
+    @stores = Stores.all
   end
 
   def show
     @store = Store.find(params[:id])
-    @reviews = Review.page(params[:page]).per(20)
+    @product = Product.find(params[:id])
+    @reviews = Review.where(product_id: Product.where(store_id: @store.id).ids)
     @user = User.all
-
   end
 
   def edit
@@ -34,6 +34,13 @@ class Store::StoresController < ApplicationController
     current_store.update(is_deleted: true)
     reset_session
     redirect_to root_path
+  end
+
+  def correct_store
+    @store = Store.find(params[:id])
+    unless @store == current_store.id
+      redirect_to root_path
+    end
   end
 
   private

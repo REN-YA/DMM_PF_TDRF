@@ -1,8 +1,12 @@
 class Store::GenresController < ApplicationController
+  before_action :authenticate_store!
+  before_action :correct_genre,only: [:new,:edit,:destroy]
 
   def index
     @genre = Genre.new
-    @genres = Genre.all
+    @store = current_store
+    @item = @store.products
+    @genres = @item.group(:genre_id)
   end
 
   def create
@@ -32,6 +36,10 @@ class Store::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     @genre.destroy
     redirect_to store_genres_path
+  end
+
+  def correct_genre
+    @genre = Genre.find(params[:id])
   end
 
   private

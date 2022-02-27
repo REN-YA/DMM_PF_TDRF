@@ -1,6 +1,18 @@
 ja:
     enums:
       product:
+      # 　name: 商品名
+      # 　image_id: 商品画像
+      # 　genre_id: 商品ジャンル
+      # 　selling_price: 販売価格
         is_selling:
           on_sale: 販売中
           no_sale: 販売停止中
+
+    # 　genre:
+    #     name: ジャンル名
+
+    #   review:
+    #     contents: レビュー内容
+    #     evaluation: 星評価
+
