@@ -26,22 +26,40 @@ deviseを用いてユーザー側と店舗側の2種のアカウントを用意�
 &emsp;リアルなお客さまご意見を参考にし、課題を見つけてお店をさらに良くしたいと思っている店舗様・会社様
 
 ### 主な利用シーン
-ユーザー側：<br>
-【店探し】<br>
+【ユーザー側】<br>
+●店探し<br>
 &emsp;他のユーザーが発信・共有した情報などから、食事や飲み会をする為に店探しをしたいとき。利用予定の店舗評判を確認したいとき。<br>
-【食事後】<br>
+●食事後<br>
 &emsp;食事後に自身の飲食体験を他のユーザーに向けて情報発信・共有を行いたいとき<br>
-お店側：<br>
-【既存店の改善】<br>
+【お店側】：<br>
+●既存店の改善<br>
 &emsp;ユーザーからのリアルな意見を参考にお店の改善を行いたいとき<br>
-【新規出店計画時】<br>
+●新規出店計画時<br>
 &emsp;新規出店予定地域の他店舗に対するユーザー意見から、地域性や顧客層の分析を行いたいとき
 
 ## 設計書
-* テーマ、チャレンジ要素確定後作成
+【要件定義書】<br>
+&emsp;<https://docs.google.com/document/d/1oSI2MiYxIYlDu_InFhFUKi5VuZb8a44WRSa8EAklu2c/edit?usp=sharing><br>
+【機能一覧】<br>
+&emsp;<https://docs.google.com/document/d/1nsXWgorUz6HuIAKedK4Xn9ajn9H1AXCEzdhHqGoE1Mo/edit?usp=sharing><br>
+【ワイヤーフレーム】<br>
+&emsp;●店舗側：<https://drive.google.com/file/d/1OWI0f74waLw1L9Y_-mleE4-any7KseRe/view?usp=sharing><br>
+&emsp;●ユーザー側<https://drive.google.com/file/d/17kbNiDRvvjmeF2A2A9IrXR00lClNgmf4/view?usp=sharing><br>
+【UlFlor】<br>
+&emsp;●店舗側：<https://drive.google.com/file/d/1KaoR1nl9XBV4i7uL3_7fdjX3Mdb3uR2U/view?usp=sharing><br>
+&emsp;●ユーザー側<https://drive.google.com/file/d/1r1ShANdidKHYz5eE3u8EZyvNK3eHt-aN/view?usp=sharing><br>
+【ER図】<br>
+&emsp;<https://drive.google.com/file/d/1UO1zf2lAfXsOzU-yoWHVSUZEBDmg5RUJ/view?usp=sharing>
+【テーブル定義書】<br>
+&emsp;<https://docs.google.com/spreadsheets/d/1Iuk3FSCGu3O8x9G7ODuMrhP2Tt9A4pQTQ9nFQKHk24c/edit?usp=sharing><br>
+【詳細設計書】<br>
+&emsp;<https://docs.google.com/spreadsheets/d/1XHVhpZF1crvvjp5a6FGyDrvu4VH_K09KnE7LrcKFdCA/edit?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1UiSl6IcDO8CTGqVYsWmoK2NvDT5arf7wpJIfH_n9ikg/edit?usp=sharing?>
+
+## 補足スライド資料
+ &emsp;<https://docs.google.com/presentation/d/1MIb9WbdWEmTF9-e72qNm37TxIBrNL83IepWD1fxVNGU/edit?usp=sharing>
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -51,4 +69,5 @@ deviseを用いてユーザー側と店舗側の2種のアカウントを用意�
 - IDE：Cloud9
 
 ## 使用素材
-* 使用検討中
+●Font Awesome<https://fontawesome.com/><br>
+●O-DANフリー写真<https://o-dan.net/ja/>
