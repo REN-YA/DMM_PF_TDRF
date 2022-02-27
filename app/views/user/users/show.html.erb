@@ -11,7 +11,7 @@
       <% end %>
   </div>
   <div class="row justify-content-center">
-    <% if current_user %>
+    <% if user_signed_in? %>
     <span class="follow_box">
       <p>
         <% if current_user.following?(@user) %>
