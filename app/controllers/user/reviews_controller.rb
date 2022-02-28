@@ -10,7 +10,7 @@ class User::ReviewsController < ApplicationController
      @review = Review.new(review_params)
      @review.user_id = current_user.id
     if @review.save
-      redirect_to user_review_path(@review.user.id)
+      redirect_to user_review_path(@review.id)
     else
       @reviews = Review.where(product_id: @product.id)
       render "/store/products/show"
