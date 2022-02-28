@@ -67,7 +67,6 @@
             <th>レビュー商品</th>
             <th>ユーザー名</th>
             <th>フォロワー数</th>
-            <th>ユーザーランキング</th>
             <th>評価</th>
             <th>レビュー内容</th>
           </tr>
@@ -93,9 +92,6 @@
               </td>
               <td class="text-center">
                 <%= link_to review.user.followers.count,user_user_followers_path(review.user_id) %>
-              </td>
-              <td class="text-center">
-                ランキング
               </td>
               <td class="review-evaluation" data-score="<%= review.evaluation %>"class="text-center"></td>
               <td class="text-center">

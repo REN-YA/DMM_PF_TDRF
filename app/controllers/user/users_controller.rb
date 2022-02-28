@@ -1,5 +1,5 @@
 class User::UsersController < ApplicationController
-   before_action :correct_user,only: [:edit,:withdrawal]
+
 
 
   def index
@@ -43,12 +43,7 @@ class User::UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user.id
-      redirect_to root_path
-    end
-  end
+
 
 
   private

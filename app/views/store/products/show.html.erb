@@ -68,7 +68,6 @@
             <th>投稿日</th>
             <th>ユーザー名</th>
             <th>フォロワー数</th>
-            <th>ユーザーランキング</th>
             <th>評価</th>
             <th>レビュー内容</th>
           </tr>
@@ -88,12 +87,10 @@
                   <% end %>
                 </td>
                 <td><%= link_to review.user.followers.count,user_user_followers_path(review.user_id) %></td>
-                <td>平均評価</td>
                 <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
                 <td><%= review.contents %></td>
               </tr>
           <% end %>
-
           </div>
         </tbody>
       </table>
