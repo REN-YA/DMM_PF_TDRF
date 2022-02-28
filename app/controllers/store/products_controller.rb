@@ -20,6 +20,7 @@ class Store::ProductsController < ApplicationController
     @genres = Genre.all
     @products = Product.all
     @store = current_store
+
   end
 
   def show

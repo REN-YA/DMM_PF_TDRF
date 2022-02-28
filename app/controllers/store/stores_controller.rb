@@ -1,5 +1,5 @@
 class Store::StoresController < ApplicationController
-  before_action :correct_store,only: [:edit,:withdrawal]
+
 
   def index
     @users = User.page(params[:page]).per(20)
