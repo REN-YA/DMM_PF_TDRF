@@ -5,7 +5,7 @@ class User::UsersController < ApplicationController
   def index
     @users = User.all
     @stores = Store.page(params[:page]).per(20)
-    @reviews = Review.where(user_id: @user.id)
+    @reviews = Review.where(user_id: @users.ids)
   end
 
   def show
