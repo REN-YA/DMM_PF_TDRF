@@ -49,7 +49,7 @@ deviseを用いてユーザー側と店舗側の2種のアカウントを用意�
 &emsp;●店舗側：<https://drive.google.com/file/d/1KaoR1nl9XBV4i7uL3_7fdjX3Mdb3uR2U/view?usp=sharing><br>
 &emsp;●ユーザー側<https://drive.google.com/file/d/1r1ShANdidKHYz5eE3u8EZyvNK3eHt-aN/view?usp=sharing><br>
 【ER図】<br>
-&emsp;<https://drive.google.com/file/d/1UO1zf2lAfXsOzU-yoWHVSUZEBDmg5RUJ/view?usp=sharing>
+&emsp;<https://drive.google.com/file/d/1UO1zf2lAfXsOzU-yoWHVSUZEBDmg5RUJ/view?usp=sharing><br>
 【テーブル定義書】<br>
 &emsp;<https://docs.google.com/spreadsheets/d/1Iuk3FSCGu3O8x9G7ODuMrhP2Tt9A4pQTQ9nFQKHk24c/edit?usp=sharing><br>
 【詳細設計書】<br>
