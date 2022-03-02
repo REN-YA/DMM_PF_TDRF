@@ -8,6 +8,7 @@ class User::ReviewsController < ApplicationController
   def create
      @product = Product.find_by(params[:id])
      @review = Review.new(review_params)
+    @review.score = Language.get_data(review_params[:contents])
      @review.user_id = current_user.id
     if @review.save
       redirect_to user_review_path(@review.id)
