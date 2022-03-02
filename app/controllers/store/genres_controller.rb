@@ -4,9 +4,8 @@ class Store::GenresController < ApplicationController
 
   def index
     @genre = Genre.new
-    @store = current_store
-    @item = @store.products
-    @genres = @item.group(:genre_id)
+    @store = Store.find(params[:id])
+    @genres = Genre.where(genre_id: @store.id)
   end
 
   def create
@@ -26,7 +25,7 @@ class Store::GenresController < ApplicationController
   def update
      @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      redirect_to store_genres_path
+      redirect_to store_store_genres_path
     else
       render 'edit'
     end
@@ -35,7 +34,7 @@ class Store::GenresController < ApplicationController
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
-    redirect_to store_genres_path
+    redirect_to store_stores_genres_path
   end
 
   def correct_genre

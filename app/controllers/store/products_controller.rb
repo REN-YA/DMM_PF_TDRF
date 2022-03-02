@@ -19,7 +19,7 @@ class Store::ProductsController < ApplicationController
   def index
     @genres = Genre.all
     @products = Product.all
-    @store = current_store
+    @stores = Store.all
 
   end
 
