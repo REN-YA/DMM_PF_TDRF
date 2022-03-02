@@ -4,11 +4,11 @@
       <h2>商品一覧</h2>
     </div>
   </div>
-    <% if @store = current_store %>
+  
       <div class="new_product">
         <%= link_to '新規登録', new_store_product_path , class: "btn-lg btn-primary" %>
       </div>
-    <% end %>
+ 
   <div>
     <% @genres.each do |genre| %>
     <div class="genre-name row justify-content-center">
@@ -24,7 +24,7 @@
             <%= link_to product.name, store_product_path(product), class: "product_#{product.id}" %>
           </div>
           <div class="product-price">
-            <%= product.selling_price %>円
+            <%= product.selling_price %>円（税込）
           </div>
           <div class="product-is_selling">
             <% if product.is_selling == "on_sale" %>
