@@ -4,12 +4,13 @@ class Store::GenresController < ApplicationController
 
   def index
     @genre = Genre.new
-    @store = Store.find(params[:id])
-    @genres = Genre.where(genre_id: @store.id)
+    @store = current_store
+    @genres = Genre.where(store_id: @store.id)
   end
 
   def create
     @genre = Genre.new(genre_params)
+    @genre.store_id = current_store.id
     if @genre.save
       redirect_to store_genres_path
     else
@@ -43,7 +44,7 @@ class Store::GenresController < ApplicationController
 
   private
   def genre_params
-    params.require(:genre).permit(:name)
+    params.require(:genre).permit(:name, :store_id)
   end
 
 end
