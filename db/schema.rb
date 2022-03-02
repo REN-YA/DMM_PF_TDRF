@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2022_03_02_102433) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "store_id"
   end
 
   create_table "notifications", force: :cascade do |t|
