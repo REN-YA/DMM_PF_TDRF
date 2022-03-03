@@ -30,6 +30,7 @@ class User::ReviewsController < ApplicationController
 
   def update
      @review = Review.find(params[:id])
+     @review.score = Language.get_data(review_params[:contents])
     if @review.update(review_params)
       redirect_to user_review_path
     else
