@@ -6,8 +6,8 @@ class Store < ApplicationRecord
 
   attachment :image
 
-  has_many :products
-  has_many :genres
+  has_many :products , dependent: :destroy
+  has_many :genres , dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

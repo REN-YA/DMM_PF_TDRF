@@ -1,7 +1,7 @@
 class Review < ApplicationRecord
 
-  has_many :notifications
-  has_many :favorites
+  has_many :notifications , dependent: :destroy
+  has_many :favorites , dependent: :destroy
   belongs_to :user
   belongs_to :product
 

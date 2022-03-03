@@ -3,6 +3,7 @@ class Store::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @store = current_store
   end
 
   def create

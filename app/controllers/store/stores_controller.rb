@@ -8,7 +8,6 @@ class Store::StoresController < ApplicationController
 
   def show
     @store = Store.find(params[:id])
-    @product = Product.find(params[:id])
     @reviews = Review.where(product_id: Product.where(store_id: @store.id).ids)
     @user = User.all
   end
