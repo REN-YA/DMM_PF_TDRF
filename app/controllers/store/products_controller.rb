@@ -18,10 +18,9 @@ class Store::ProductsController < ApplicationController
   end
 
   def index
+    @stores = Store.all
     @genres = Genre.all
     @products = Product.all
-    @stores = Store.all
-
   end
 
   def show
