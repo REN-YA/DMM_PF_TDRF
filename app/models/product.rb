@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 
   belongs_to :store
   belongs_to :genre
-  has_many :reviews
+  has_many :reviews , dependent: :destroy
 
   validates :name, {presence: true}
   validates :image, {presence: true}

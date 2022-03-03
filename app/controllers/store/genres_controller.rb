@@ -26,7 +26,7 @@ class Store::GenresController < ApplicationController
   def update
      @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      redirect_to store_store_genres_path
+      redirect_to store_genres_path
     else
       render 'edit'
     end

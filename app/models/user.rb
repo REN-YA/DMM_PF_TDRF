@@ -7,9 +7,9 @@ class User < ApplicationRecord
   #mount_uploader :image, ImageUploader
   attachment :image
 
-  has_many :relationships
-  has_many :favorites
-  has_many :reviews
+  has_many :relationships , dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
 
 
