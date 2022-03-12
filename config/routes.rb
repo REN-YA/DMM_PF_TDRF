@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create]
     delete 'favorites/destroy' => 'favorites#destroy', as: 'favorite'
     end
-    resources :notification, only: [:index]
   end
 
     #店舗側decvise
@@ -40,7 +39,8 @@ Rails.application.routes.draw do
     end
     resources :products, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
-
+    resources :notifications, only: [:index]
   end
+
 
 end
