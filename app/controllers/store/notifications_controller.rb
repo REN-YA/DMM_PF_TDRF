@@ -12,6 +12,6 @@ class Store::NotificationsController < ApplicationController
   def destroy_all
       #通知を全削除
       @notifications = current_store.passive_notifications.destroy_all
-      redirect_to users_notifications_path
+      redirect_to store_notifications_path
   end
 end
