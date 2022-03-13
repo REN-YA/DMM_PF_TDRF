@@ -10,7 +10,14 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reviews = Review.where(user_id: @user.id)
+
+    if params[:page]
+    @hoge = "review-evaluation" + "_" + params[:page]
+    else
+     @hoge = "review-evaluation_1"
+    end
+    @reviews = Review.where(user_id: @user.id).page(params[:page]).per(10)
+
     #自身の全レビューに対するいいねの総数
     @user_reviews = @user.reviews
       @review_favorites_count = 0
