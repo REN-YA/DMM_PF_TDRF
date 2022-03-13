@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :products, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
     resources :notifications, only: [:index]
+    delete 'notifications/all' => 'notifications#destroy_all', as: 'destroy_all'
   end
 
 

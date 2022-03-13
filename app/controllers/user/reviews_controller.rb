@@ -6,11 +6,16 @@ class User::ReviewsController < ApplicationController
   end
 
   def create
-     @product = Product.find_by(params[:id])
-     @review = Review.new(review_params)
-    @review.score = Language.get_data(review_params[:contents])
+     @product = Product.find(review_params[:product_id])
+
+     
+     @review = @product.reviews.build(review_params)
+     @review.score = Language.get_data(review_params[:contents])
      @review.user_id = current_user.id
+
     if @review.save
+      #通知の作成
+      @product.create_notification_review!(current_user, @review.id)
       redirect_to user_review_path(@review.id)
     else
       @reviews = Review.where(product_id: @product.id)
