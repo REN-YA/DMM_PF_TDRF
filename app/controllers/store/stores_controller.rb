@@ -2,13 +2,13 @@ class Store::StoresController < ApplicationController
 
 
   def index
-    @users = User.page(params[:page]).per(20)
-    @stores = Store.all
+    @users = User.page(params[:page]).per(10)
+    @stores = Store..page(params[:page]).per(10)
   end
 
   def show
     @store = Store.find(params[:id])
-    @reviews = Review.where(product_id: Product.where(store_id: @store.id).ids)
+    @reviews = Review.where(product_id: Product.where(store_id: @store.id).ids).page(params[:page]).per(10)
     @user = User.all
   end
 

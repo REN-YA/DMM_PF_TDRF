@@ -18,7 +18,6 @@ class Store::ProductsController < ApplicationController
   end
 
   def index
-    @stores = Store.all
     @genres = Genre.all
     @products = Product.all
   end
@@ -27,7 +26,7 @@ class Store::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @store = Store.find(@product.store_id)
     @review = Review.new
-    @reviews = Review.where(product_id: @product.id)
+    @reviews = Review.where(product_id: @product.id).page(params[:page]).per(10)
 
   end
 
@@ -50,13 +49,6 @@ class Store::ProductsController < ApplicationController
     @product.destroy
     redirect_to store_products_path
   end
-
-  # def correct_product
-  #   @product = Product.find(params[:id])
-  #   unless @product.store.id == current_store.id
-  #     redirect_to root_path
-  #   end
-  # end
 
    private
   def product_params
