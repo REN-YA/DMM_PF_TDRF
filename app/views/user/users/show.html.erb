@@ -95,7 +95,7 @@
             <%= review.product.store.name %>
             <% end %>
           </td class="text-center">
-          <td class="<%=@hoge %>" data-score="<%= review.evaluation %>"class="text-center"></td>
+          <td class="review-evaluation" data-score="<%= review.evaluation %>"class="text-center"></td>
           <td class="text-center">
             <%= review.contents %>
           </td>
@@ -104,51 +104,14 @@
           </td>
         </tr>
       <% end %>
+      <%= paginate @reviews %>
     </tbody>
   </table>
-  <%= paginate @reviews %>
   </div>
 </div>
 
-
 <script>
-  // $('.review-evaluation').raty({
-  //   readOnly: true,
-  //   starOn: "<%= asset_path('star-on.png') %>",
-  //   starOff: "<%= asset_path('star-off.png') %>",
-  //   starHalf: "<%= asset_path('star-half.png') %>",
-  //   score: function() {
-  //     return $(this).attr('data-score');
-  //   }
-  // });
-   var page = 1;
-  $(window).on('scroll', function() {
-  scrollHeight = $(document).height();
-  scrollPosition = $(window).height() + $(window).scrollTop();
-
-  if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
-
-
-    $('.jscroll').jscroll({
-      contentSelector: '.scroll-list',
-      nextSelector: 'span.next:last a',
-      callback: function(){//新たに読み込まれたページにはjavascriptが当たらないので、ここに追加すれば読み込まれる
-    page++;
-  　　$(`.review-evaluation_${page}`).raty({
-      readOnly: true,
-      starOn: "<%= asset_path('star-on.png') %>",
-      starOff: "<%= asset_path('star-off.png') %>",
-      starHalf: "<%= asset_path('star-half.png') %>",
-      score: function() {
-        return $(this).attr('data-score');
-        }
-      });
-      }
-    });
-  }
-});
-
-  $(`.review-evaluation_1`).raty({
+  $('.review-evaluation').raty({
     readOnly: true,
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
