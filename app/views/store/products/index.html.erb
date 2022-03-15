@@ -4,11 +4,11 @@
       <h2>商品一覧</h2>
     </div>
   </div>
-  
+
       <div class="new_product">
-        <%= link_to '新規登録', new_store_product_path , class: "btn-lg btn-primary" %>
+        <%= link_to '新規登録', new_store_store_product_path , class: "btn-lg btn-primary" %>
       </div>
- 
+
   <div>
     <% @genres.each do |genre| %>
     <div class="genre-name row justify-content-center">
@@ -21,7 +21,7 @@
             <%= attachment_image_tag(product, :image, :fill, 150, 150) %>
           </div>
           <div class="product-name">
-            <%= link_to product.name, store_product_path(product), class: "product_#{product.id}" %>
+            <%= link_to product.name, store_store_product_path(product.store_id, product.id), class: "product_#{product.id}" %>
           </div>
           <div class="product-price">
             <%= product.selling_price %>円（税込）

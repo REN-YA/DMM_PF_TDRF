@@ -1,6 +1,6 @@
 class Store::GenresController < ApplicationController
   before_action :authenticate_store!
-  before_action :correct_genre,only: [:new,:edit,:destroy]
+  # before_action :correct_genre,only: [:new,:edit,:destroy]
 
   def index
     @genre = Genre.new
@@ -12,7 +12,7 @@ class Store::GenresController < ApplicationController
     @genre = Genre.new(genre_params)
     @genre.store_id = current_store.id
     if @genre.save
-      redirect_to store_genres_path
+      redirect_to store_store_genres_path
     else
       @genres = Genre.all
       render 'index'
@@ -26,7 +26,7 @@ class Store::GenresController < ApplicationController
   def update
      @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      redirect_to store_genres_path
+      redirect_to store_store_genres_path
     else
       render 'edit'
     end
@@ -35,12 +35,12 @@ class Store::GenresController < ApplicationController
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
-    redirect_to store_stores_genres_path
+    redirect_to store_store_genres_path
   end
 
-  def correct_genre
-    @genre = Genre.find(params[:id])
-  end
+  # def correct_genre
+  #   @genre = Genre.find(params[:genre_id])
+  # end
 
   private
   def genre_params

@@ -9,7 +9,7 @@
       <%= link_to '編集', edit_store_product_path(@product), class: 'btn-lg btn-success' %>
       <%= link_to '削除', store_product_path(@product), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger "%>
     <% end %>
-    <%= link_to '商品一覧', store_products_path(@product.store_id), class: 'btn-lg btn-primary' %>
+    <%= link_to '商品一覧', store_store_products_path(@product.store_id), class: 'btn-lg btn-primary' %>
   </div>
 
   <div class='row justify-content-center'>
@@ -73,7 +73,6 @@
           </tr>
         </thead>
         <tbody>
-        <div class="scroll-list jscroll">
           <% @reviews.each do |review| %>
               <tr>
                 <td>
@@ -91,10 +90,9 @@
                 <td><%= review.contents %></td>
               </tr>
           <% end %>
-          <%= paginate @reviews %>
-          </div>
         </tbody>
       </table>
+      <span class="row justify-content-center"><%= paginate @reviews %></span>
   </div>
   <script>
   $('.review-evaluation').raty({

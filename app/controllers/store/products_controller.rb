@@ -18,7 +18,8 @@ class Store::ProductsController < ApplicationController
   end
 
   def index
-    @genres = Genre.all
+    @store = Store.find(params[:store_id])
+    @genres = Genre.where(store_id: @store)
     @products = Product.all
   end
 
