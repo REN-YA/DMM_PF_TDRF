@@ -36,9 +36,9 @@ Rails.application.routes.draw do
     get '/stores/unsubscribe' => 'stores#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
     patch '/stores/withdrawal' => 'stores#withdrawal', as: 'withdrawal'
-    end
     resources :products, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
+    end
     resources :notifications, only: [:index]
     delete 'notifications/all' => 'notifications#destroy_all', as: 'destroy_all'
   end

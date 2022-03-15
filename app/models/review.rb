@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   validates :evaluation, {presence: true}
 
   def favorited_by?(user)
-    favorites.where(user_id: user_id).exists?
+    favorites.where(user_id: user.id).exists?
   end
 
 end
