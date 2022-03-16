@@ -6,8 +6,8 @@
   </div>
   <div class='product_edit_delete_btn'>
     <% if @store == current_store %>
-      <%= link_to '編集', edit_store_product_path(@product), class: 'btn-lg btn-success' %>
-      <%= link_to '削除', store_product_path(@product), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger "%>
+      <%= link_to '編集', edit_store_store_product_path(@product.store_id, @product), class: 'btn-lg btn-success' %>
+      <%= link_to '削除', store_store_product_path(@product.store_id, @product), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger "%>
     <% end %>
     <%= link_to '商品一覧', store_store_products_path(@product.store_id), class: 'btn-lg btn-primary' %>
   </div>
@@ -99,7 +99,7 @@
     readOnly: true,
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",s
+    starHalf: "<%= asset_path('star-half.png') %>",
     score: function() {
       return $(this).attr('data-score');
     }
