@@ -1,3 +1,25 @@
 // Place all the styles related to the user/notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.notification{
+    position: relative;
+    margin: 0.5em 0;
+    position: relative;
+    padding: 0.3em 1em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    background-color: #DDDDDD;
+}
+.notification:before, .notification:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: black;
+}
+.notification:before {left: 10px;}
+.notification:after {right: 10px;}

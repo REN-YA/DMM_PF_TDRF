@@ -7,7 +7,6 @@ class User::ReviewsController < ApplicationController
 
   def create
      @product = Product.find(review_params[:product_id])
-
      @review = @product.reviews.build(review_params)
      @review.score = Language.get_data(review_params[:contents])
      @review.user_id = current_user.id

@@ -10,4 +10,34 @@ ja:
         previous: "<"
         next: ">"
         last: "≫"
-
+    activerecord:
+      models:
+        store: 店舗
+        user: ユーザー
+        review: レビュー
+        product: 商品
+        genre: ジャンル
+      attributes:
+        store:
+          name: 店舗名
+          image_id: イメージ画像
+          store_genres: 店舗ジャンル
+          post_code: 郵便番号
+          address: メールアドレス
+          business_hours: 営業時間
+          reservation_site: 予約サイトURL
+          telephone_number: 電話番号
+          email: メールアドレス
+        user:
+          name: ユーザー名
+          image_id: イメージ画像
+        review:
+          contents: レビュー内容
+          evaluation: 評価
+        product:
+          name: 商品名
+          image_id: イメージ画像
+          selling_price: 販売価格（税込）
+          is_selling: 販売ステータス
+        genre:
+          name: ジャンル名
