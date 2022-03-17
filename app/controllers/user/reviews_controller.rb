@@ -1,5 +1,6 @@
 class User::ReviewsController < ApplicationController
   # before_action :correct_review,only: [:edit,:destroy]
+  # before_action :set_product
 
   def new
     @review = Review.new
@@ -28,15 +29,20 @@ class User::ReviewsController < ApplicationController
   end
 
   def edit
+    # binding.pry
     @review = Review.find(params[:id])
   end
 
   def update
+    # @product = Product.find(review_params[:product_id])
      @review = Review.find(params[:id])
      @review.score = Language.get_data(review_params[:contents])
+    # @review.user_id = current_user.id
+    # binding.pry
     if @review.update(review_params)
-      redirect_to user_review_path
+      redirect_to user_review_path(@review.id)
     else
+      @review = Review.find(params[:id])
       render :edit
     end
   end
@@ -55,7 +61,11 @@ class User::ReviewsController < ApplicationController
   # end
 
   private
+  # def  set_product
+  #   @product = Product.find(params[:product_id])
+  # end
+
   def review_params
-      params.require(:review).permit(:user_id, :product_id, :contents, :evaluation )
+      params.require(:review).permit(:product_id, :contents, :evaluation).merge(user_id: current_user.id)
   end
 end
