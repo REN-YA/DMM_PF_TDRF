@@ -24,9 +24,9 @@
           <td class="text-center"><%= Review.where(product_id: Product.where(store_id: store.id).ids).count %></td>
         </tr>
       <% end %>
-      <span class="row justify-content-center"><%= paginate stores %></span>
     </tbody>
   </table>
+  <span class="row justify-content-center"><%= paginate stores %></span>
 </div>
 
 <script>

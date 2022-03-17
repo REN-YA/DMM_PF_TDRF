@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 2022_03_12_061851) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "evaluation"
-    t.float "store_evaluation"
     t.decimal "score", precision: 5, scale: 3
+    t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 
   create_table "stores", force: :cascade do |t|

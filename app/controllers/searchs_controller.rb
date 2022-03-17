@@ -3,7 +3,7 @@ class SearchsController < ApplicationController
     @model = params["model"]
     @content = params["content"]
     @method = params["method"]
-    @records = search_for(@model, @content, @method)
+    @records = search_for(@model, @content, @method).page(params[:page]).per(10)
     @users = User.page(params[:page]).per(10)
     @stores = Store.page(params[:page]).per(10)
   end
