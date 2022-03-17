@@ -18,7 +18,13 @@
           </td>
           <td>フォロー数:<%= link_to user.followings.count,user_user_followings_path(user.id) %></td>
           <td>フォロワー数:<%= link_to user.followers.count,user_user_followers_path(user.id) %></td>
-          <td>ユーザーランキング</td>
+          <td>
+            <% begin %>
+              <%= user.reviews.map {|review| review.favorites.count}.sum / user.reviews.count %>
+            <% rescue %>
+              <p>0</p>
+            <% end %>
+          </td>
         </tr>
       <% end %>
       </tbody>

@@ -41,7 +41,7 @@
           <%= link_to @user.followers.count,user_user_followers_path(@user.id) %>
         </td>
         <% if user_signed_in? %>
-          <td id="favorite_buttons_<%= review.id %>">
+          <td id="favorite_buttons_<%= @review.id %>">
             <%= render 'user/favorites/favorite', review: @review %>
           </td>
         <% elsif store_signed_in? %>
@@ -92,7 +92,7 @@
       <div class="information_show">
         料理名
          <span class="information_box">
-           <%= link_to store_store_product_path(@review.product_id) do %>
+           <%= link_to store_store_product_path(@review.product.store_id, @review.product_id) do %>
              <%= @review.product.name %>
            <% end %>
          </span>
