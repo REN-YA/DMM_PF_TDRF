@@ -71,18 +71,19 @@
   <div class="table_title">
     <p class="row justify-content-center">レビュー</p>
   </div>
+  <div class="scroll-list jscroll">
   <table class="table">
     <thead class="thead">
       <tr>
         <th>投稿日</th>
         <th>店舗名</th>
+        <th>評価商品</th>
         <th>評価</th>
         <th>評価内容</th>
         <th>いいね</th>
       </tr>
     </thead>
     <tbody>
-    <div class="scroll-list jscroll">
       <% @reviews.each do |review| %>
         <tr>
           <td>
@@ -90,24 +91,35 @@
             <%= review.created_at.strftime('%Y/%m/%d/%T') %>
             <% end %>
           </td>
-          <td class="text-center">
+          <td>
             <%= link_to store_store_path(review.product.store_id) do %>
             <%= review.product.store.name %>
             <% end %>
-          </td class="text-center">
-          <td class="review-evaluation" data-score="<%= review.evaluation %>"class="text-center"></td>
-          <td class="text-center">
+          </td>
+          <td>
+            <%= link_to store_store_product_path(review.product.store_id, review.product_id) do %>
+            <%= review.product.name %>
+            <% end %>
+          </td>
+          <td class="review-evaluation" data-score="<%= review.evaluation %>"></td>
+          <td>
             <%= review.contents %>
           </td>
-          <td id="favorite_buttons_<%= review.id %>" class="text-center">
-            <%= render 'user/favorites/favorite', review: review %>
-          </td>
+          <% if user_signed_in? %>
+            <td id="favorite_buttons_<%= review.id %>">
+              <%= render 'user/favorites/favorite', review: review %>
+            </td>
+          <% elsif store_signed_in? %>
+            <td><span style="color: red;">♥</span><%= review.favorites.count %></td>
+          <% else %>
+            <td><span style="color: red;">♥</span><%= review.favorites.count %></td>
+          <% end %>
         </tr>
       <% end %>
-
-    </div>
     </tbody>
   </table>
+  <span class="row justify-content-center"><%= paginate @reviews %></span>
+  </div>
 </div>
 
 <script>

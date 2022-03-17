@@ -33,9 +33,15 @@
             <li><%= link_to "TOP",root_path, class: 'fas fa-sign-in-alt nav-link nav-list text-dark' %></li>
             <li><%= link_to "店舗&ユーザー一覧",store_stores_path, class: 'fas fa-sign-in-alt nav-link nav-list text-dark' %></li>
             <li><%= link_to "My店舗",store_store_path(current_store), class: 'fas fa-sign-in-alt nav-link nav-list text-dark' %></li>
-            <li><%= link_to "ジャンル一覧&登録",store_genres_path, class: 'fas fa-sign-in-alt nav-link nav-list text-dark' %></li>
-            <li><%= link_to '商品登録', new_store_product_path, class: 'fas fa-sign-out-alt nav-link nav-list text-dark' %></li>
-            <li><%= link_to '商品一覧', store_products_path, class: 'fas fa-sign-out-alt nav-link nav-list text-dark' %></li>
+            <% if unchecked_notifications.any? %>
+                <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
+            <li>
+                <%= link_to "通知", store_notifications_path, class: "fas fa-sign-out-alt nav-link nav-list text-dark" %>
+            </li>
+            <li><%= link_to "ジャンル一覧&登録",store_store_genres_path(current_store.id), class: 'fas fa-sign-in-alt nav-link nav-list text-dark' %></li>
+            <li><%= link_to '商品登録', new_store_store_product_path(current_store.id), class: 'fas fa-sign-out-alt nav-link nav-list text-dark' %></li>
+            <li><%= link_to '商品一覧', store_store_products_path(current_store.id), class: 'fas fa-sign-out-alt nav-link nav-list text-dark' %></li>
             <li><%= link_to "店舗ログアウト",destroy_store_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link nav-list text-dark' %></li>
           </ul>
         </div>

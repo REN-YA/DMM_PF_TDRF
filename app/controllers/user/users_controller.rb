@@ -3,14 +3,14 @@ class User::UsersController < ApplicationController
 
 
   def index
-    @users = User.all
-    @stores = Store.page(params[:page]).per(20)
-    @reviews = Review.where(user_id: @users.ids)
+    @users = User.page(params[:page]).per(10)
+    @stores = Store.page(params[:page]).per(10)
+    @reviews = Review.where(user_id: @users.ids).page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
-    @reviews = Review.where(user_id: @user.id)
+    @reviews = Review.where(user_id: @user.id).page(params[:page]).per(10)
     #自身の全レビューに対するいいねの総数
     @user_reviews = @user.reviews
       @review_favorites_count = 0

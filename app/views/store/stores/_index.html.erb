@@ -11,7 +11,6 @@
       </tr>
     </thead>
     <tbody>
-    <div class="scroll-list jscroll">
       <% stores.each do |store| %>
         <tr>
           <td class="text-center">
@@ -25,8 +24,7 @@
           <td class="text-center"><%= Review.where(product_id: Product.where(store_id: store.id).ids).count %></td>
         </tr>
       <% end %>
-
-    </div>
+      <span class="row justify-content-center"><%= paginate stores %></span>
     </tbody>
   </table>
 </div>

@@ -2,6 +2,7 @@
   <div class="table_title">
     <p class="row justify-content-center">ユーザー一覧</p>
   </div>
+  <div class="scroll-list jscroll">
   <table class="table">
     <thead class="thead">
       <tr>
@@ -12,7 +13,6 @@
       </tr>
     </thead>
     <tbody>
-    <div class="scroll-list jscroll">
       <% users.each do |user| %>
         <tr>
           <td class="text-center">
@@ -33,11 +33,10 @@
               <p>0</p>
             <% end %>
           </td>
-
         </tr>
       <% end %>
-
-    </div>
     </tbody>
   </table>
+  <span class="row justify-content-center"><%= paginate users %></span>
+  </div>
 </div>

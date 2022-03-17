@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="notification col-6 text-center">
+        <h2>通知</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <%= link_to store_destroy_all_path, method: :delete do %>
+        <i class="fas fa-trash" style="color: black;"></i>
+        <h7 style="color: black;">全削除</h7>
+      <% end %>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+    <% if @notifications.exists? %>
+      <div class="stores-index">
+        <%= render @notifications %>
+      </div>
+    <% else %>
+      <p>通知はありません</p>
+    <% end %>
+    </div>
+</div>

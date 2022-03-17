@@ -4,7 +4,7 @@
       <h2>商品編集</h2>
     </div>
   </div>
-  
+
   <% if @product.errors.any? %>
     <div class = "alert">
       <%= @product.errors.count %>件のエラーが発生しました
@@ -13,8 +13,8 @@
       <% end %>
     </div>
   <% end %>
-  
-  <%= form_with model: @product, url: store_product_path, local: true do |f| %>
+
+  <%= form_with model: @product, url: store_store_product_path, local: true do |f| %>
   <div class='row justify-content-center'>
     <div class='col-8'>
       <div class='form-group'>
