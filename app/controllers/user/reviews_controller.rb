@@ -1,5 +1,5 @@
 class User::ReviewsController < ApplicationController
-  before_action :correct_review,only: [:edit,:destroy]
+  # before_action :correct_review,only: [:edit,:destroy]
 
   def new
     @review = Review.new
@@ -44,15 +44,15 @@ class User::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to store_products_path
+    redirect_to store_store_product_path(@review.product.store_id, @review.product_id)
   end
 
-  def correct_review
-        @review = Review.find(params[:id])
-    unless @review.user.id == current_user.id
-      redirect_to root_path
-    end
-  end
+  # def correct_review
+  #       @review = Review.find(params[:id])
+  #   unless @review.user.id == current_user.id
+  #     redirect_to root_path
+  #   end
+  # end
 
   private
   def review_params
