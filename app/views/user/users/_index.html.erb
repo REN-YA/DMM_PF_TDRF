@@ -14,18 +14,18 @@
     <tbody>
       <% users.each do |user| %>
         <tr>
-          <td class="text-center">
+          <td>
             <%= link_to user_user_path(user.id) do %>
             <%= user.name %>
             <% end %>
           </td>
-          <td class="text-center">
+          <td>
             <%= link_to user.followings.count,user_user_followings_path(user.id) %>
           </td>
-          <td class="text-center">
+          <td>
             <%= link_to user.followers.count,user_user_followers_path(user.id) %>
             </td>
-          <td class="text-center">
+          <td>
             <% begin %>
               <%= user.reviews.map {|review| review.favorites.count}.sum / user.reviews.count %>
             <% rescue %>

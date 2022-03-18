@@ -13,15 +13,15 @@
     <tbody>
       <% stores.each do |store| %>
         <tr>
-          <td class="text-center">
+          <td>
             <%= link_to store_store_path(store.id) do %>
             <%= store.name %>
             <% end %>
           </td>
-          <td class="text-center">
+          <td>
             <span class="review-evaluation" data-score="<%= Review.where(product_id: Product.where(store_id: store.id).ids).sum(:evaluation).fdiv(Review.where(product_id: Product.where(store_id: store.id).ids).count)%>"></span>
           </td>
-          <td class="text-center"><%= Review.where(product_id: Product.where(store_id: store.id).ids).count %></td>
+          <td><%= Review.where(product_id: Product.where(store_id: store.id).ids).count %></td>
         </tr>
       <% end %>
     </tbody>
