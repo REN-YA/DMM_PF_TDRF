@@ -58,9 +58,6 @@ class User::ReviewsController < ApplicationController
   # end
 
   private
-  # def  set_product
-  #   @product = Product.find(params[:product_id])
-  # end
 
   def review_params
       params.require(:review).permit(:product_id, :contents, :evaluation).merge(user_id: current_user.id)
