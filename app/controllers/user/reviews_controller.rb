@@ -29,16 +29,13 @@ class User::ReviewsController < ApplicationController
   end
 
   def edit
-    # binding.pry
+    
     @review = Review.find(params[:id])
   end
 
   def update
-    # @product = Product.find(review_params[:product_id])
      @review = Review.find(params[:id])
      @review.score = Language.get_data(review_params[:contents])
-    # @review.user_id = current_user.id
-    # binding.pry
     if @review.update(review_params)
       redirect_to user_review_path(@review.id)
     else
@@ -61,9 +58,6 @@ class User::ReviewsController < ApplicationController
   # end
 
   private
-  # def  set_product
-  #   @product = Product.find(params[:product_id])
-  # end
 
   def review_params
       params.require(:review).permit(:product_id, :contents, :evaluation).merge(user_id: current_user.id)
