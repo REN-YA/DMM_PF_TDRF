@@ -25,10 +25,10 @@
   </div>
 
   <div class="row justify-content-center">
-    <div class="user_image col-4">
+    <div class="user_image col-sm-4">
       <%= attachment_image_tag(@user, :image, :fill, 300, 300) %>
     </div>
-    <div class="user_information col-5">
+    <div class="user_information col-sm-5">
         <p>ユーザー名 <span class="information_box"><%= @user.name %></span></p>
       <div class="information_others_box">
         <div class="information_others">フォロー数
@@ -88,7 +88,7 @@
         <tr>
           <td>
             <%= link_to user_review_path(review) do %>
-            <%= review.created_at.strftime('%Y/%m/%d/%T') %>
+            <%= review.created_at.strftime('%Y/%m/%d') %>
             <% end %>
           </td>
           <td>
