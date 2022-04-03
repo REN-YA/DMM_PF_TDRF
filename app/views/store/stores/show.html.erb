@@ -1,5 +1,5 @@
 <div class="store-image row justify-content-center">
-  <%= attachment_image_tag(@store, :image, :fill, 1100, 300) %>
+  <%= attachment_image_tag(@store, :image, :fill, 425, 300 ) %>
 </div>
 <div class="container">
   <div class="row justify-content-center">
@@ -17,21 +17,21 @@
   </div >
 
   <div class="row justify-content-center">
-    <div class="col-4 center">
+    <div class="col-6 text-center">
       店舗名<span class="information_box"><%= @store.name %></span>
     </div >
   </div >
   <div class="row justify-content-center">
-    <div class="info-genre-lank col-3">
+    <div class="info-genre-lank col-sm-3 text-center ">
       店舗ジャンル<span class="information_box"><%= @store.store_genres %></span>
     </div>
-    <div class="info-genre-lank col-4">
+    <div class="info-genre-lank col-sm-4 text-center ">
       料理総平均評価
       <span class="review-evaluation information_box" data-score="<%= @reviews.sum(:evaluation).fdiv(@reviews.count)%>"></span>
     </div>
   </div >
   <div class="row justify-content-center">
-    <div class="col-5">
+    <div class="col-sm-5">
       <div class="information_left">
       お問い合わせ電話番号<span class="information_box"><%= @store.telephone_number %></span>
       </div>
@@ -45,7 +45,7 @@
       ご予約サイト<span class="information_box"><%= @store.reservation_site %></span>
       </div>
     </div>
-    <div class="col-7">
+    <div class="col-sm-7">
       <div class="information_right">
       郵便番号<span class="information_box"><%= @store.post_code %></span>
       </div>
@@ -76,7 +76,7 @@
             <tr>
               <td>
                 <%= link_to user_review_path(review) do %>
-                <%= review.created_at.strftime('%Y/%m/%d/%T') %>
+                <%= review.created_at.strftime('%Y/%m/%d') %>
                 <% end %>
               </td>
               <td>
