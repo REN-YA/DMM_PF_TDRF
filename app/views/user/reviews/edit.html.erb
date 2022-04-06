@@ -6,10 +6,10 @@
   </div>
 
   <div class='row justify-content-center'>
-    <div class="product_image col-4">
+    <div class="product_image col-sm-4">
       <%= attachment_image_tag(@review.product, :image, :fill, 300, 300) %>
     </div>
-    <div class="review_information col-4">
+    <div class="review_information col-sm-4">
       <div class="information_edit">
         料理名<span class="information_box"><%= @review.product.name %></span>
        </div>
@@ -30,10 +30,8 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="review_new col-8 text-center">
-      <h4>レビューを更新する</h4>
-    </div>
+  <div class="row justify-content-center review_edit">
+    <h4>レビューを更新する</h4>
   </div>
 
   <% if @review.errors.any? %>
@@ -47,7 +45,7 @@
 
   <%= form_with model: @review, url: user_review_path, local:true do |f| %>
     <div class="row justify-content-center">
-      <div id="evaluate_stars" class="col-3">
+      <div id="evaluate_stars" class="col-sm-3 text-center">
         <%= f.label :evaluation, '料理評価', class: 'evaluation-stars' %>
       </div>
     </div>
