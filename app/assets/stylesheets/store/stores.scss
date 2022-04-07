@@ -31,13 +31,17 @@ showページトップ画像
 .info-name:before {left: 10px;}
 .info-name:after {right: 10px;}
 
+//店舗名表示位置調整
+.name{
+  margin-top: 10px;
+}
 
 //showページ内edit・indexボタン固定
-.edit {
-  position: absolute;
-  top: 205px;
-  right: 65px;
-}
+// .edit {
+//   position: absolute;
+//   top: 205px;
+//   right: 65px;
+// }
 
 //店舗各情報間隔のレイアウト用
 .info-genre-lank{

@@ -7,16 +7,16 @@
       <h4>店舗情報</h4>
     </div>
   </div >
-  <div class="edit-index">
+  <div class="row justify-content-center">
     <% if @store == current_store %>
-    <%= link_to "編集する", edit_store_store_path(current_store.id), class: "btn setting_btn btn-success" %>
-    <%= link_to "ジャンル登録",store_store_genres_path(current_store.id), class: 'btn setting_btn btn-primary' %>
-    <%= link_to '商品登録', new_store_store_product_path(current_store.id) , class: "btn setting_btn btn-primary" %>
+    <%= link_to "編集する", edit_store_store_path(current_store.id), class: "btn setting_btn btn-success btn-sm" %>
+    <%= link_to "ジャンル登録",store_store_genres_path(current_store.id), class: 'btn setting_btn btn-primary btn-sm' %>
+    <%= link_to '商品登録', new_store_store_product_path(current_store.id) , class: "btn setting_btn btn-primary btn-sm" %>
     <% end %>
-    <%= link_to '商品一覧画面', store_store_products_path(@store.id), class: 'btn setting_btn btn-primary' %>
+    <%= link_to '商品一覧画面', store_store_products_path(@store.id), class: 'btn setting_btn btn-primary btn-sm' %>
   </div >
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center name">
     <div class="col-sm-6 text-center">
       店舗名<span class="information_box"><%= @store.name %></span>
     </div >
