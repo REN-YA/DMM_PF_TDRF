@@ -40,6 +40,7 @@
 }
 
 .navbar-toggler{
+  margin: 5px 0px 0px 180px;
   background-color: rgba( 255, 255, 255, 0.5);
 }
 .navbar-toggler-icon{
@@ -61,8 +62,8 @@
   height: 100px;
   background-image: image-url('top-image.jpeg');
   background-size: cover;
-  background-position: 0px 245px;
-  position: relative;
+  background-position: 0px 284px;
+  // position: relative;
 }
 //navバー設定
 .nav-user {
@@ -107,7 +108,7 @@ margin: 0 30px 0 auto;
   height: 100px;
   background-image: image-url('header-rigth.jpeg');
   background-size: cover;
-  background-position: 0px 110px;
+  background-position: 0px 99px;
 }
 //navバー設定
 .nav-store{
@@ -131,8 +132,8 @@ margin: 0 30px 0 auto;
   height: 100px;
   background-image: image-url('store-header.jpeg');
   background-size: cover;
-  background-position: 0px 260px;
-  position: relative;
+  background-position: 0px 125px;
+  // position: relative;
 }
 
 //サイトタイトル
@@ -266,7 +267,7 @@ footer {
     border:2px solid #990000;
     padding:12px; font-weight:850;
   }
-  
+
 @media screen and (max-width:425px) {
   .social i {
     color: blue;
