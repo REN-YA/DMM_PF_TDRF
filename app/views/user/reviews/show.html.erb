@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="review_name font-weight-normal mt-5 mb-5 text-center">
+    <div class="review_name font-weight-normal  text-center">
     <h1>レビュー詳細</h1>
     </div>
   </div>
-  <div class="edit_delete">
+  <div class="row justify-content-center">
     <% if @user == current_user %>
-      <%= link_to '編集', edit_user_review_path(@review), class: 'btn-lg btn-success' %>
-      <%= link_to '削除', user_review_path(@review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger "%>
+      <%= link_to '編集', edit_user_review_path(@review), class: 'btn-lg setting_btn btn-success' %>
+      <%= link_to '削除', user_review_path(@review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg setting_btn btn-danger "%>
     <% end %>
   </div>
 
@@ -62,7 +62,7 @@
 
   <!--レビュー投稿内容-->
   <div class="row justify-content-center">
-    <div class="review_show col-6 text-center">
+    <div class="review_show col-sm-6 text-center">
       <h4>レビュー内容</h4>
     </div>
   </div>
