@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="product_new col-sm-8 text-center">
-      <h2>商品一覧</h2>
+      <h2>商品登録</h2>
     </div>
   </div>
 
-    <div class="index_btn">
+    <div class="row justify-content-center">
       <%= link_to '一覧画面', store_store_products_path, class: 'btn btn-primary' %>
     </div>
 
@@ -19,27 +19,26 @@
   <% end %>
 
 <%= form_with model: @product, url: store_store_products_path, local: true do |f| %>
-<div class='container'>
-  <div class='row'>
-    <div class='col-sm-8 offset-sm-2'>
+  <div class='row justify-content-center'>
+    <div class='col-sm-8'>
       <div class='form-group'>
-        <%= f.label '商品画像', class: 'col-sm-3' %>
-        <%= f.attachment_field :image, class: 'col-6' %>
+        <%= f.label '商品画像', class: 'col-sm-8' %>
+        <%= f.attachment_field :image, class: 'col-sm-8' %>
       </div>
       <div class='form-group'>
-        <%= f.label '商品名', class: 'col-sm-3' %>
-        <%= f.text_field :name, class: 'col-6', placeholder: "商品名" %>
+        <%= f.label '商品名', class: 'col-sm-8' %>
+        <%= f.text_field :name, class: 'col-sm-8', placeholder: "商品名" %>
       </div>
       <div class='form-group'>
-        <%= f.label 'ジャンル', class: 'col-sm-3' %>
-        <%= f.collection_select :genre_id, Genre.where(store_id: @store.id), :id, :name, { prompt: '選択してください'}, class: 'col-6' %>
+        <%= f.label 'ジャンル', class: 'col-sm-8' %>
+        <%= f.collection_select :genre_id, Genre.where(store_id: @store.id), :id, :name, { prompt: '選択してください'}, class: 'col-sm-8' %>
       </div>
       <div class='form-group'>
-        <%= f.label '税込価格', class: 'col-sm-3' %>
-        <%= f.text_field :selling_price, class: 'col-6', placeholder: "税込価格で入力してください" %>円
+        <%= f.label '税込価格', class: 'col-sm-8' %>
+        <%= f.text_field :selling_price, class: 'col-sm-8', placeholder: "税込価格で入力してください" %>円
       </div>
       <div class='form-group'>
-        <%= f.label '販売ステータス', class: 'col-sm-3' %>
+        <%= f.label '販売ステータス', class: 'col-sm-8' %>
         <%= f.collection_radio_buttons :is_selling, Product.is_sellings_i18n, :first , :last %>
       </div>
       <div class='text-center'>
@@ -47,6 +46,5 @@
       </div>
     </div>
   </div>
-</div>
 <% end %>
 </div>
